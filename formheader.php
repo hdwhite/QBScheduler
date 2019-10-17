@@ -181,7 +181,7 @@ while($sdetail = $schedulequery->fetch_assoc())
 
 				$('.finals').change(function()
 				{
-					updateFinals(parseInt($(this).attr('id')));
+					updateFinals(parseInt($(this).attr('value')));
 				});
 
 				function updateFinals(finalsFormat)
@@ -290,7 +290,7 @@ while($sdetail = $schedulequery->fetch_assoc())
 					url = '<?=$formatcode ?>';
 					updateFormat();
 					<?php if($numfinals > 0) { ?>
-						$('#<?=$numfinals ?>.finals').prop("checked", true);
+						$('#finals<?=$numfinals ?>').prop("checked", true);
 						updateFinals(<?=$numfinals ?>);
 					<?php } ?>
 					updateTourneyName('<?=$tourneyname ?>');
