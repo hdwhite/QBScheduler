@@ -1,0 +1,112 @@
+.scontainer
+{
+	width: 10.5in;
+	margin: 0 auto;
+	text-align: center;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: normal;
+	font-family: Times New Roman, serif;
+}
+
+.scontainer h2
+{
+	margin: 0.83em 0;
+}
+
+.scontainer p
+{
+	margin: 1em 0;
+}
+
+.name h2
+{
+	font-size: 175%;
+}
+
+.phase
+{
+	margin: 0 auto;
+	overflow: auto;
+	width: 100%;
+}
+
+.phase table
+{
+	border-collapse: collapse;
+	border: 1px solid black;
+}
+
+.phase th, .phase td
+{
+	border: 1px solid black;
+	padding: 1px 2px;
+	text-align: center;
+}
+
+.phase td
+{
+	min-width: 170px;
+}
+
+.phaseheader h4
+{
+	font-size: 120%
+	font-weight: bold;
+}
+
+.phaserow
+{
+	padding-top: 0.1in;
+	padding-bottom: 0.1in;
+}
+
+.instruction
+{
+	margin: 0 auto;
+	text-align: left;
+	width: 7.5in;
+}
+
+.left
+{
+	float: left;
+	padding-left: 5%;
+	width: 45%;
+}
+
+.left table
+{
+	margin-left: auto;
+	margin-right: 10%;
+}
+
+.center
+{
+	margin: 0 auto;
+	display: inline-block;
+}
+
+.right
+{
+	float: right;
+	padding-right: 5%;
+	width: 45%;
+}
+
+.right table
+{
+	margin-left: 10%;
+	margin-right: auto;
+}
+
+.blank td
+{
+	min-width: 1.6in;
+	height: 25px;
+}
+
+.pagebreak
+{
+	display: none;
+}

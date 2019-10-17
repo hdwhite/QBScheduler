@@ -1,0 +1,19 @@
+body
+{
+	background: #E6E6E6;
+}
+
+.margin
+{
+	width: 8.5in;
+	text-align: center;
+	margin: 0 auto;
+	background: white;
+}
+
+.scontainer
+{
+	margin: 0.5in 1in;
+	display: inline-block;
+	overflow: auto;
+}

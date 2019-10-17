@@ -1,0 +1,65 @@
+.scontainer
+{
+	height: 9in;
+	width: 6.5in;
+/*	background: #0000FF; */
+}
+
+body
+{
+	background: #FFFFFF;
+	font-size: 10pt;
+}
+
+#container
+{
+	width: 6.5in;
+}
+
+#header
+{
+	display: none;
+}
+
+#footer
+{
+	display: none;
+}
+
+.entry
+{
+	background: #FFFFFF;
+	border: none;
+	width: 6.5in;
+}
+
+h2
+{
+	font-size: 175%;
+}
+
+.name h2
+{
+	font-size: 250%;
+}
+
+th, td
+{
+	font-size: 10pt;
+}
+
+.instruction
+{
+	width: 6.5in;
+}
+
+.instruction p
+{
+	font-size: larger;
+}
+
+.pagebreak
+{
+	display: inherit;
+	page-break-before: always;
+}
