@@ -190,8 +190,14 @@ while($sdetail = $schedulequery->fetch_assoc())
 					$('#numpackets').html(numPackets);
 					$('#packets').show();
 					for (i = 0; i < 4; i++)
-						$('.finals' + i).hide();
-					$('.finals' + finalsFormat).show();
+					{
+						$('.rrfinals' + i).hide();
+						$('.crossfinals' + i).hide();
+					}
+					if(finalsType[url] == 0)
+						$('.rrfinals' + finalsFormat).show();
+					else if(finalsType[url] == 1)
+						$('.crossfinals' + finalsFormat).show();
 				}
 
 				$('#tournamentname').on('input', function()
@@ -289,8 +295,12 @@ while($sdetail = $schedulequery->fetch_assoc())
 					$('#<?=$formatcode ?>').prop("checked", true);
 					url = '<?=$formatcode ?>';
 					updateFormat();
-					<?php if($numfinals > 0) { ?>
-						$('#finals<?=$numfinals ?>').prop("checked", true);
+					<?php if($numfinals > 0) { 
+						if($formatfinals == 0) { ?>
+							$('#rrfinals<?=$numfinals ?>').prop("checked", true);
+						<?php } elseif($formatfinals == 1) { ?>
+							$('#crossfinals<?=$numfinals ?>').prop("checked", true);
+						<?php } ?>
 						updateFinals(<?=$numfinals ?>);
 					<?php } ?>
 					updateTourneyName('<?=$tourneyname ?>');
@@ -327,5 +337,5 @@ while($sdetail = $schedulequery->fetch_assoc())
 		<div id="container">
 			<div id="header">
 				<h2><?=$headertext ?></h2>
-				<?php include("../header.php"); ?>
+				<?php include("header.php"); ?>
 			</div>
