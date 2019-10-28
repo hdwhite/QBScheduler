@@ -14,9 +14,10 @@ if($scheduleinfo['editcode'] !== $editcode)
 $formatinfo = $mysqli->query("SELECT * FROM $_templatedb WHERE id=" . $scheduleinfo['format'])->fetch_assoc();
 $formatteams = $formatinfo['teams'];
 $formatcode = $formatinfo['url'];
+$formatfinals = $formatinfo['finalstype'];
 $numfinals = $scheduleinfo['finals'];
 $tourneyname = $scheduleinfo['name'];
-$playoffsizes = explode(",", $scheduleinfo['playofflist']);
+$playoffsizes = explode(",", $formatinfo['playofflist']);
 
 $roomlist = Array();
 $roominfo = $mysqli->query("SELECT * FROM $_roomdb WHERE tournament=$tournamentid ORDER BY position ASC");

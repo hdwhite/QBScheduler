@@ -55,8 +55,8 @@ $template = $mysqli->query("SELECT * FROM $_templatedb WHERE id=" . $scheduleinf
 	<body>
 		<div id="container">
 			<div id="header">
-				<h2 id="headername">Viewing a Schedule</h2>
-				<?php include("../header.php"); ?>
+				<h2><?php echo($scheduleinfo['name']); ?></h2>
+				<?php include("header.php"); ?>
 			</div>
 			<div id="content">
 				<div class="entry">

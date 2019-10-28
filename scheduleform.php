@@ -85,14 +85,14 @@
 		</div>
 		<div id="rrfinals" class="roomblock finalsformat" style="display:none;">
 			<br><p><b>Number of finals matches:</b></p>
-			<input type="radio" name="finals" class="finals" id="finals1" value="1">1 (Run a finals match only if the top two teams have equal records.)<br>
-			<input type="radio" name="finals" class="finals" id="finals2" value="2">2 (The above, plus advantaged finals if the top two teams are separated by one game.)<br>
-			<input type="radio" name="finals" class="finals" id="finals3" value="3">3 (The above, plus play-in matches if there is a tie for second place.)<br>
+			<input type="radio" name="finals" class="finals" id="rrfinals1" value="1">1 (Run a finals match only if the top two teams have equal records.)<br>
+			<input type="radio" name="finals" class="finals" id="rrfinals2" value="2">2 (The above, plus advantaged finals if the top two teams are separated by one game.)<br>
+			<input type="radio" name="finals" class="finals" id="rrfinals3" value="3">3 (The above, plus play-in matches if there is a tie for second place.)<br>
 		</div>
 		<div id="crossfinals" class="roomblock finalsformat" style="display:none;">
 			<br><p><b>Number of finals matches:</b></p>
-			<input type="radio" name="finals" class="finals" id="finals1" value="1">1 (The top team from each of the two top brackets play in a one-game finals.)<br>
-			<input type="radio" name="finals" class="finals" id="finals2" value="2">2 (The top two teams from each of the top two brackets play in a 4-team elimination bracket.)<br>
+			<input type="radio" name="finals" class="finals" id="crossfinals1" value="1">1 (The top team from each of the two top brackets play in a one-game finals.)<br>
+			<input type="radio" name="finals" class="finals" id="crossfinals2" value="2">2 (The top two teams from each of the top two brackets play in a 4-team elimination bracket.)<br>
 		</div>
 		<div id="singleelim" class="roomblock finalsformat" style="display:none;">
 			<br><p>This format features a single-elimination playoff.</p>
