@@ -339,6 +339,6 @@ while($sdetail = $schedulequery->fetch_assoc())
 	<body>
 		<div id="container">
 			<div id="header">
-				<h2><?=$headertext ?></h2>
+				<h2 id="headername">Quizbowl Schedule Generator</h2>
 				<?php include("header.php"); ?>
 			</div>
