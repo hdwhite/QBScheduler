@@ -19,26 +19,29 @@ $template = $mysqli->query("SELECT * FROM $_templatedb WHERE id=" . $scheduleinf
 		<script>
 			$(document).ready(function()
 			{
-				$('.tourneyname').text('<?php echo($scheduleinfo['name']); ?>');
+				tournamentname = <?=json_encode($scheduleinfo['name']) ?>;
+				$('.tourneyname').text(tournamentname);
 				<?php
 					while($curbracket = $bracketdata->fetch_assoc())
 					{
 						if($curbracket['phase'] == 0)
-							echo("$('.prelimbracket" . $curbracket['position'] . "').text('" . $curbracket['name'] . "');\n");
+							echo("$('.prelimbracket" . $curbracket['position'] . "').text(" . json_encode($curbracket['name']) . ");\n");
 						elseif($curbracket['phase'] == 1)
-							echo("$('.playoffbracket" . $curbracket['position'] . "').text('" . $curbracket['name'] . "');\n");
+							echo("$('.playoffbracket" . $curbracket['position'] . "').text(" . json_encode($curbracket['name']) . ");\n");
 					}
 					
 					while($curroom = $roomdata->fetch_assoc())
-						echo("$('.room" . $curroom['position'] . "').text('" . $curroom['name'] . "');\n");
+						echo("$('.room" . $curroom['position'] . "').text(" . json_encode($curroom['name']) . ");\n");
 					
 					while($curteam = $teamdata->fetch_assoc())
-						echo("$('.team" . $curteam['position'] . "').text('" . $curteam['name'] . "');\n");
+						echo("$('.team" . $curteam['position'] . "').text(" . json_encode($curteam['name']) . ");\n");
 					
 					while($curteam = $playoffdata->fetch_assoc())
-						echo("$('.playoffteam" . $curteam['position'] . "').text('" . $curteam['name'] . "');\n");
+						echo("$('.playoffteam" . $curteam['position'] . "').text(" . json_encode($curteam['name']) . ");\n");
 				?>
 				$('.finals' + <?php echo($scheduleinfo['finals']); ?>).show();
+				document.title = "Schedule for " + tournamentname;
+				$('#headername').text(tournamentname);
 			});
 		</script>
 		<style type="text/css">
@@ -47,12 +50,12 @@ $template = $mysqli->query("SELECT * FROM $_templatedb WHERE id=" . $scheduleinf
 			@import url("/qb/schedules/schedules.css");
 			@import url("/qb/schedules/print.css") print;
 		</style>
-		<title><?php echo($scheduleinfo['name']); ?> Schedule</title>
+		<title>Viewing a Schedule</title>
 	</head>
 	<body>
 		<div id="container">
 			<div id="header">
-				<h2><?php echo($scheduleinfo['name']); ?></h2>
+				<h2 id="headername">Viewing a Schedule</h2>
 				<?php include("../header.php"); ?>
 			</div>
 			<div id="content">

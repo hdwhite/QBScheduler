@@ -4,7 +4,7 @@ require_once($_dbconfig);
 
 $tournamentid = $_POST['tournamentid'];
 $editcode = $_POST['hash'];
-$tournamentname = addslashes(trim($_POST['name']));
+$tournamentname = trim($_POST['name']);
 $numteams = $_POST['numTeams'];
 $format = $_POST[$numteams . 'teamschedules'];
 $prelimbrackets = array();
@@ -68,7 +68,7 @@ $teamposition = 0;
 for($position = 0; $position < $numprelims; $position++)
 {
 	if($numprelims > 1)
-		$bracketname = addslashes(trim($prelimbrackets[$position]));
+		$bracketname = trim($prelimbrackets[$position]);
 	else
 		$bracketname = NULL;
 	$bracketstmt->execute();
@@ -76,7 +76,7 @@ for($position = 0; $position < $numprelims; $position++)
 	
 	for($i = 0; $i < count($teamlist[$position]); $i++)
 	{
-		$teamname = addslashes(trim($teamlist[$position][$i]));
+		$teamname = trim($teamlist[$position][$i]);
 		$teamstmt->execute();
 		$teamposition++;
 	}
@@ -87,13 +87,13 @@ if($numplayoffs > 1)
 	$bracketstart = 0;
 	for($position = 0; $position < $numplayoffs; $position++)
 	{
-		$bracketname = addslashes(trim($playoffbrackets[$position]));
+		$bracketname = trim($playoffbrackets[$position]);
 		$bracketstmt->execute();
 		$bracketnum = $mysqli->insert_id;
 		for($i = 0; $i < count($playofflist[$position]); $i++)
 		{
 			$teamposition = $bracketstart + $i;
-			$teamname = addslashes(trim($playofflist[$position][$i]));
+			$teamname = trim($playofflist[$position][$i]);
 			$teamstmt->execute();
 		}
 		$bracketstart += $playoffformat[$position];
@@ -104,7 +104,7 @@ $roomstmt = $mysqli->prepare("INSERT INTO $_roomdb (name, tournament, position) 
 $roomstmt->bind_param("sii", $roomname, $tournamentid, $position);
 for($position = 0; $position < count($roomlist); $position++)
 {
-	$roomname = addslashes(trim($roomlist[$position]));
+	$roomname = trim($roomlist[$position]);
 	$roomstmt->execute();
 }
 header("Location: $tournamentid/edit/$editcode");

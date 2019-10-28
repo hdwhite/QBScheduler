@@ -283,6 +283,9 @@ while($sdetail = $schedulequery->fetch_assoc())
 				<?php }} ?>
 				
 				<?php if($mode === "edit") { ?>
+					tname = <?=json_encode($tourneyname) ?>;
+					document.title = "Editing " + tname;
+					$('#headername').text(tname);
 					$('#numTeams').val(<?=$formatteams ?>);
 					numTeams = <?=$formatteams ?>;
 					updateNumTeams();
@@ -293,24 +296,24 @@ while($sdetail = $schedulequery->fetch_assoc())
 						$('#finals<?=$numfinals ?>').prop("checked", true);
 						updateFinals(<?=$numfinals ?>);
 					<?php } ?>
-					updateTourneyName('<?=$tourneyname ?>');
-					$('#rooms').val('<?=implode("\\n", $roomlist) ?>');
+					updateTourneyName(tname);
+					$('#rooms').val(<?=json_encode($roomlist) ?>.join("\n"));
 					roomList = <?=json_encode($roomlist) ?>;
 					updateRooms();
 					<?php for($i = 0; $i < count($bracketdata); $i++) { ?>
-						$('#teams<?=$i ?>').val('<?=implode("\\n", $bracketdata[$i]) ?>');
+						$('#teams<?=$i ?>').val(<?=json_encode($bracketdata[$i]) ?>.join("\n"));
 					<?php } ?>
 					<?php foreach($prelimbracketnames as $sequence => $name) { ?>
-						$('#prelimBracket<?=$sequence ?>').val('<?=$name ?>');
+						$('#prelimBracket<?=$sequence ?>').val(<?=json_encode($name) ?>);
 					<?php } ?>
 					<?php for($i = 0; $i < count($playoffbracketdata); $i++) { ?>
-						$('#playoffteams<?=$i ?>').val('<?=implode("\\n", $playoffbracketdata[$i]) ?>');
+						$('#playoffteams<?=$i ?>').val(<?=json_encode($playoffbracketdata[$i]) ?>.join("\n"));
 					<?php } ?>
 					<?php foreach($playoffbracketnames as $sequence => $name) { ?>
-						$('#playoffBracket<?=$sequence ?>').val('<?=$name ?>');
+						$('#playoffBracket<?=$sequence ?>').val(<?=json_encode($name) ?>);
 					<?php } ?>
 					updateTeams();
-					$('#playoffBrackets').val('<?=implode("\\n", $playoffbracketnames) ?>');
+					$('#playoffBrackets').val(<?=json_encode($playoffbracketnames) ?>.join("\n"));
 					updatePlayoffBrackets();
 				<?php } ?>
 			});
@@ -321,11 +324,11 @@ while($sdetail = $schedulequery->fetch_assoc())
 			@import url("/qb/schedules/schedules.css");
 			@import url("/qb/schedules/print.css") print;
 		</style>
-		<title><?=$title ?></title>
+		<title>Quizbowl Schedule Generator</title>
 	</head>
 	<body>
 		<div id="container">
 			<div id="header">
-				<h2><?=$headertext ?></h2>
+				<h2 id="headername">Quizbowl Schedule Generator</h2>
 				<?php include("../header.php"); ?>
 			</div>

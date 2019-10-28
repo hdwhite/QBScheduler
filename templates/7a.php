@@ -9,7 +9,7 @@
 		<div class="schedule center">
 			<table>
 				<thead>
-					<tr><th>Round</th><th class="room0"><?php echo($roomlist[0]); ?></th><th class="room1"><?php echo($roomlist[1]); ?></th><th class="room2"><?php echo($roomlist[2]); ?></th><th>Bye</th></tr>
+					<tr><th>Round</th><th class="room0"></th><th class="room1"></th><th class="room2"></th><th>Bye</th></tr>
 				</thead>
 				<tbody>
 				<?php
@@ -54,7 +54,7 @@
 		<div class="schedule center">
 			<table>
 				<thead>
-					<tr><th>Round</th><th class="room0"><?php echo($roomlist[0]); ?></th><th class="room1"><?php echo($roomlist[1]); ?></th><th class="room2"><?php echo($roomlist[2]); ?></th><th>Bye</th></tr>
+					<tr><th>Round</th><th class="room0"></th><th class="room1"></th><th class="room2"></th><th>Bye</th></tr>
 				</thead>
 				<tbody>
 				<?php
