@@ -57,12 +57,12 @@
 		<div class="schedule center">
 			<table>
 				<thead>
-					<tr><th>Round</th><th class="room0"></th><th class="room1"></th><th>Bye</th></tr>
+					<tr><th>Round</th><th class="room0"></th><th class="room1"></th><th class="room2"></th><th>Bye</th></tr>
 				</thead>
 				<tbody>
-					<tr><th>10</th><td><span class="team1"></span>&nbsp;<br><span class="team2"></span>&nbsp;</td><td><span class="team4"></span>&nbsp;<br><span class="team5"></span>&nbsp;</td><td><span class="team7"></span>&nbsp;<br><span class="team8"></span>&nbsp;</td><td><span class="team0"></span>&nbsp;<br><span class="team3"></span>&nbsp;<br><span class="team6"></span>&nbsp;</td></tr>
-					<tr><th>11</th><td><span class="team0"></span>&nbsp;<br><span class="team2"></span>&nbsp;</td><td><span class="team3"></span>&nbsp;<br><span class="team5"></span>&nbsp;</td><td><span class="team6"></span>&nbsp;<br><span class="team8"></span>&nbsp;</td><td><span class="team1"></span>&nbsp;<br><span class="team4"></span>&nbsp;<br><span class="team7"></span>&nbsp;</td></tr>
-					<tr><th>12</th><td><span class="team0"></span>&nbsp;<br><span class="team1"></span>&nbsp;</td><td><span class="team3"></span>&nbsp;<br><span class="team4"></span>&nbsp;</td><td><span class="team6"></span>&nbsp;<br><span class="team7"></span>&nbsp;</td><td><span class="team2"></span>&nbsp;<br><span class="team5"></span>&nbsp;<br><span class="team7"></span>&nbsp;</td></tr>
+					<tr><th>10</th><td><span class="playoffteam1"></span>&nbsp;<br><span class="playoffteam2"></span>&nbsp;</td><td><span class="playoffteam4"></span>&nbsp;<br><span class="playoffteam5"></span>&nbsp;</td><td><span class="playoffteam7"></span>&nbsp;<br><span class="playoffteam8"></span>&nbsp;</td><td><span class="playoffteam0"></span>&nbsp;<br><span class="playoffteam3"></span>&nbsp;<br><span class="playoffteam6"></span>&nbsp;</td></tr>
+					<tr><th>11</th><td><span class="playoffteam0"></span>&nbsp;<br><span class="playoffteam2"></span>&nbsp;</td><td><span class="playoffteam3"></span>&nbsp;<br><span class="playoffteam5"></span>&nbsp;</td><td><span class="playoffteam6"></span>&nbsp;<br><span class="playoffteam8"></span>&nbsp;</td><td><span class="playoffteam1"></span>&nbsp;<br><span class="playoffteam4"></span>&nbsp;<br><span class="playoffteam7"></span>&nbsp;</td></tr>
+					<tr><th>12</th><td><span class="playoffteam0"></span>&nbsp;<br><span class="playoffteam1"></span>&nbsp;</td><td><span class="playoffteam3"></span>&nbsp;<br><span class="playoffteam4"></span>&nbsp;</td><td><span class="playoffteam6"></span>&nbsp;<br><span class="playoffteam7"></span>&nbsp;</td><td><span class="playoffteam2"></span>&nbsp;<br><span class="playoffteam5"></span>&nbsp;<br><span class="playoffteam8"></span>&nbsp;</td></tr>
 				</tbody>
 			</table>
 		</div>

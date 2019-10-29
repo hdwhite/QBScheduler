@@ -61,7 +61,7 @@
 				</thead>
 				<tbody>
 				<?php
-					$teamorder = array(array(1, 2, 0, 4, 5, 8, 6, 7, 4),
+					$teamorder = array(array(1, 2, 0, 3, 5, 8, 6, 7, 4),
 					                   array(2, 3, 1, 4, 6, 8, 5, 7, 0),
 									   array(3, 4, 0, 2, 5, 6, 7, 8, 1),
 									   array(0, 4, 1, 3, 99, 99, 99, 99, 2),

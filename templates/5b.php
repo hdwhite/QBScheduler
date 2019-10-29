@@ -13,16 +13,16 @@
 				</thead>
 				<tbody>
 				<?php
-					$teamorder = array(array(3, 4, 2, 5, 1),
-					                   array(4, 5, 1, 3, 2),
-									   array(1, 5, 2, 4, 3),
-									   array(1, 2, 3, 5, 4),
-									   array(2, 3, 1, 4, 5),
-									   array(3, 4, 2, 5, 1),
-					                   array(4, 5, 1, 3, 2),
-									   array(1, 5, 2, 4, 3),
-									   array(1, 2, 3, 5, 4),
-									   array(2, 3, 1, 4, 5));
+					$teamorder = array(array(2, 3, 1, 4, 0),
+					                   array(3, 4, 0, 2, 1),
+									   array(0, 4, 1, 3, 2),
+									   array(0, 1, 2, 4, 3),
+									   array(1, 2, 0, 3, 4),
+									   array(2, 3, 1, 4, 0),
+					                   array(3, 4, 0, 2, 1),
+									   array(0, 4, 1, 3, 2),
+									   array(0, 1, 2, 4, 3),
+									   array(1, 2, 0, 3, 4));
 					foreach($teamorder as $round => $roundorder)
 					{
 						echo("<tr><th>" . ($round + 1) . "</th>");
@@ -57,12 +57,12 @@
 		<div class="schedule center">
 			<table>
 				<thead>
-					<tr><th>Round</th><th class="room0"></th><th class="room1"></th><th class="room2"></th><th>Bye</th></tr>
+					<tr><th>Round</th><th class="room0"></th><th class="room1"></th><th>Bye</th></tr>
 				</thead>
 				<tbody>
-					<tr><th>11</th><td><span class="team1"></span>&nbsp;<br><span class="team2"></span>&nbsp;</td><td><span class="team3"></span>&nbsp;<br><span class="team4"></span>&nbsp;</td><td><span class="team0"></span>&nbsp;</td></tr>
-					<tr><th>12</th><td><span class="team0"></span>&nbsp;<br><span class="team2"></span>&nbsp;</td><td><span class="team3"></span>&nbsp;<br><span class="team4"></span>&nbsp;</td><td><span class="team1"></span>&nbsp;</td></tr>
-					<tr><th>13</th><td><span class="team1"></span>&nbsp;<br><span class="team2"></span>&nbsp;</td><td>&nbsp;<br>&nbsp;</td><td><span class="team2"></span>&nbsp;</td></tr>
+					<tr><th>11</th><td><span class="playoffteam1"></span>&nbsp;<br><span class="playoffteam2"></span>&nbsp;</td><td><span class="playoffteam3"></span>&nbsp;<br><span class="playoffteam4"></span>&nbsp;</td><td><span class="playoffteam0"></span>&nbsp;</td></tr>
+					<tr><th>12</th><td><span class="playoffteam0"></span>&nbsp;<br><span class="playoffteam2"></span>&nbsp;</td><td><span class="playoffteam3"></span>&nbsp;<br><span class="playoffteam4"></span>&nbsp;</td><td><span class="playoffteam1"></span>&nbsp;</td></tr>
+					<tr><th>13</th><td><span class="playoffteam0"></span>&nbsp;<br><span class="playoffteam1"></span>&nbsp;</td><td>&nbsp;<br>&nbsp;</td><td><span class="playoffteam2"></span>&nbsp;</td></tr>
 				</tbody>
 			</table>
 		</div>

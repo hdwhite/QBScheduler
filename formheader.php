@@ -191,13 +191,13 @@ while($sdetail = $schedulequery->fetch_assoc())
 					$('#packets').show();
 					for (i = 0; i < 4; i++)
 					{
-						$('.rrfinals' + i).hide();
-						$('.crossfinals' + i).hide();
+						$('.finals' + i).hide();
+						$('.finals' + i).hide();
 					}
 					if(finalsType[url] == 0)
-						$('.rrfinals' + finalsFormat).show();
+						$('.finals' + finalsFormat).show();
 					else if(finalsType[url] == 1)
-						$('.crossfinals' + finalsFormat).show();
+						$('.finals' + finalsFormat).show();
 				}
 
 				$('#tournamentname').on('input', function()

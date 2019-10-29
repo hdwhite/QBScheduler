@@ -2,7 +2,7 @@
 <div class="entry">
 	<h4>You are in edit mode</h4>
 	<p>Anyone who has access to this URL can edit your tournament schedule at will. Please only share this page with people whom you trust. Save this URL, as it is the only way to edit a schedule without having to create a new one from scratch.</p>
-	<p>Your sharable online schedule can be found at <a href="http://hdwhite.org/test/QBScheduler/<?=$tournamentid ?>">http://hdwhite.org/test/QBScheduler/<?=$tournamentid ?></a>.</p>
+	<p>Your sharable online schedule can be found at <a href="http://hdwhite.org/qb/schedules/<?=$tournamentid ?>">http://hdwhite.org/qb/schedules/<?=$tournamentid ?></a>.</p>
 </div>
 <?php } ?>
 <div class="entry">
@@ -13,7 +13,7 @@
 	<p>If you are running a tournament, I would highly suggest reading through Chris Chiego's <a href="https://socalquizbowl.org/tournament-hosting-guide/">tournament hosting guide</a>. It contains very detailed instructions on hosting and best practices.</p>
 </div>
 <div class="entry">
-	<form action="/test/QBScheduler/createschedule.php" method="post">
+	<form action="/qb/schedules/createschedule.php" method="post">
 		<input type="hidden" id="tournamentid" name="tournamentid" value="<?=$tournamentid; ?>">
 		<input type="hidden" id="hash" name="hash" value="<?=$editcode; ?>">
 		<p><b>Tournament name:</b> <input type="text" name="name" id="tournamentname" value="<?=$tourneyname ?>" required></p>
