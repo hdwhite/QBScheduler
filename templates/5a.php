@@ -21,7 +21,7 @@
 					<tr><th>7</th><td><span class="team3"></span>&nbsp;<br><span class="team4"></span>&nbsp;</td><td><span class="team0"></span>&nbsp;<br><span class="team2"></span>&nbsp;</td><td><span class="team1"></span>&nbsp;</td></tr>
 					<tr><th>8</th><td><span class="team0"></span>&nbsp;<br><span class="team4"></span>&nbsp;</td><td><span class="team1"></span>&nbsp;<br><span class="team3"></span>&nbsp;</td><td><span class="team2"></span>&nbsp;</td></tr>
 					<tr><th>9</th><td><span class="team0"></span>&nbsp;<br><span class="team1"></span>&nbsp;</td><td><span class="team2"></span>&nbsp;<br><span class="team4"></span>&nbsp;</td><td><span class="team3"></span>&nbsp;</td></tr>
-					<tr><th>0</th><td><span class="team1"></span>&nbsp;<br><span class="team2"></span>&nbsp;</td><td><span class="team0"></span>&nbsp;<br><span class="team3"></span>&nbsp;</td><td><span class="team4"></span>&nbsp;</td></tr>
+					<tr><th>10</th><td><span class="team1"></span>&nbsp;<br><span class="team2"></span>&nbsp;</td><td><span class="team0"></span>&nbsp;<br><span class="team3"></span>&nbsp;</td><td><span class="team4"></span>&nbsp;</td></tr>
 				</tbody>
 			</table>
 		</div>
