@@ -79,9 +79,9 @@
 		<div class="phaseheader">
 			<h2>Playoff Rounds</h2>
 		</div>
+		<h3 class="playoffbracket0">&nbsp;</h3>
 		<div class="phaserow">
-			<div class="schedule left">
-				<h3 class="playoffbracket0">&nbsp;</h3>
+			<div class="schedule center">
 				<table>
 					<thead>
 						<tr><th>Round</th><th class="room0"></th><th class="room1"></th><th class="room2"></th><th class="room3"></th><th class="room4"></th></tr>
@@ -119,7 +119,7 @@
 							echo("<tr><th>" . ($round + 10) . "</th>");
 							for($j = 0; $j < sizeof($roundorder) - 1; $j += 2)
 								echo("<td><span class='playoffteam" . ($roundorder[$j] + 10) . "'></span>&nbsp;<br><span class='playoffteam" . ($roundorder[$j+1] + 10) . "'></span>&nbsp;</td>");
-							echo("<td><span class='playoffteam" . (end($roundorder) + 10) . "'></span>&nbsp;</td></tr>\n");
+							// echo("<td><span class='playoffteam" . (end($roundorder) + 10) . "'></span>&nbsp;</td></tr>\n");
 						}
 					?>
 					</tbody>

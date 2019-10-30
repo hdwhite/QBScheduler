@@ -15,13 +15,15 @@
 					</thead>
 					<tbody>
 					<?php
-						$teamorder = array(array(3, 4, 2, 5, 1, 6, 0),
-										   array(4, 5, 3, 6, 0, 2, 1),
-										   array(5, 6, 0, 4, 1, 3, 2),
-										   array(0, 6, 1, 5, 2, 4, 3),
-										   array(0, 1, 2, 6, 3, 5, 4),
-										   array(1, 2, 0, 3, 4, 6, 5),
-										   array(2, 3, 1, 4, 0, 5, 6));
+						$teamorder = array(array(4, 5, 3, 6, 2, 7, 1, 8, 0),
+										   array(5, 6, 4, 7, 3, 8, 0, 2, 1),
+										   array(6, 7, 5, 8, 0, 4, 1, 3, 2),
+										   array(7, 8, 0, 6, 1, 5, 2, 4, 3),
+										   array(0, 8, 1, 7, 2, 6, 3, 5, 4),
+										   array(0, 1, 2, 8, 3, 7, 4, 6, 5),
+										   array(1, 2, 0, 3, 4, 8, 5, 7, 6),
+										   array(2, 3, 1, 4, 0, 5, 6, 8, 7),
+										   array(3, 4, 2, 5, 1, 6, 0, 7, 8));
 						foreach($teamorder as $round => $roundorder)
 						{
 							echo("<tr><th>" . ($round + 1) . "</th>");

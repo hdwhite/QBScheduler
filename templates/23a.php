@@ -26,6 +26,7 @@
 										   array(1, 3, 0, 2, 4, 11, 5, 10, 6, 9, 7, 8),
 										   array(0, 7, 6, 8, 5, 9, 4, 10, 3, 11, 1, 2),
 										   array(2, 11, 0, 1, 3, 10, 4, 9, 5, 8, 6, 7));
+						foreach($teamorder as $round => $roundorder)
 						{
 							echo("<tr><th>" . ($round + 1) . "</th>");
 							for($j = 0; $j < sizeof($roundorder) - 1; $j += 2)
@@ -174,6 +175,7 @@
 				</table>
 			</div>
 		</div>
+		<h3>&nbsp;</h3>
 		<div class="phaserow">
 			<div class="schedule left">
 				<h3 class="playoffbracket4">&nbsp;</h3>

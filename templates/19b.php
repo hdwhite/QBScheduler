@@ -29,7 +29,7 @@
 							echo("<tr><th>" . ($round + 1) . "</th>");
 							for($j = 0; $j < sizeof($roundorder) - 1; $j += 2)
 								echo("<td><span class='team" . $roundorder[$j] . "'></span>&nbsp;<br><span class='team" . $roundorder[$j+1] . "'></span>&nbsp;</td>");
-							echo("<td><span class='team" . end($roundorder) . "'></span>&nbsp;</td>");
+							// echo("<td><span class='team" . end($roundorder) . "'></span>&nbsp;</td>");
 							echo("</tr>\n");
 						}
 					?>

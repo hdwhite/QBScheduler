@@ -27,7 +27,7 @@
 							echo("<tr><th>" . ($round + 1) . "</th>");
 							for($j = 0; $j < sizeof($roundorder) - 1; $j += 2)
 								echo("<td><span class='team" . $roundorder[$j] . "'></span>&nbsp;<br><span class='team" . $roundorder[$j+1] . "'></span>&nbsp;</td>");
-							echo("<td><span class='team" . end($roundorder) . "'></span>&nbsp;</td>");
+							// echo("<td><span class='team" . end($roundorder) . "'></span>&nbsp;</td>");
 							echo("</tr>\n");
 						}
 					?>
@@ -40,7 +40,29 @@
 			<div class="schedule center">
 				<table>
 					<thead>
-						<tr><th>Round</th><th class="room4"></th><th class="room5"></th><th class="room6"></th><th>Bye</th></tr>
+						<tr><th>Round</th><th class="room4"></th><th class="room5"></th><th class="room6"></th><th class="room7"></th></tr>
+					</thead>
+					<tbody>
+					<?php
+						foreach($teamorder as $round => $roundorder)
+						{
+							echo("<tr><th>" . ($round + 1) . "</th>");
+							for($j = 0; $j < sizeof($roundorder) - 1; $j += 2)
+								echo("<td><span class='team" . ($roundorder[$j] + 8) . "'></span>&nbsp;<br><span class='team" . ($roundorder[$j+1] + 8) . "'></span>&nbsp;</td>");
+							// echo("<td><span class='team" . (end($roundorder) + 8) . "'></span>&nbsp;</td>");
+							echo("</tr>\n");
+						}
+					?>
+					</tbody>
+				</table>
+			</div>
+		</div>
+		<h3 class="prelimbracket2">&nbsp;</h3>
+		<div class="phaserow">
+			<div class="schedule center">
+				<table>
+					<thead>
+						<tr><th>Round</th><th class="room8"></th><th class="room9"></th><th class="room10"></th><th>Bye</th></tr>
 					</thead>
 					<tbody>
 					<?php
@@ -55,30 +77,8 @@
 						{
 							echo("<tr><th>" . ($round + 1) . "</th>");
 							for($j = 0; $j < sizeof($roundorder) - 1; $j += 2)
-								echo("<td><span class='team" . ($roundorder[$j] + 7) . "'></span>&nbsp;<br><span class='team" . ($roundorder[$j+1] + 7) . "'></span>&nbsp;</td>");
-							echo("<td><span class='team" . (end($roundorder) + 7) . "'></span>&nbsp;</td>");
-							echo("</tr>\n");
-						}
-					?>
-					</tbody>
-				</table>
-			</div>
-		</div>
-		<h3 class="prelimbracket2">&nbsp;</h3>
-		<div class="phaserow">
-			<div class="schedule center">
-				<table>
-					<thead>
-						<tr><th>Round</th><th class="room7"></th><th class="room8"></th><th class="room9"></th><th>Bye</th></tr>
-					</thead>
-					<tbody>
-					<?php
-						foreach($teamorder as $round => $roundorder)
-						{
-							echo("<tr><th>" . ($round + 1) . "</th>");
-							for($j = 0; $j < sizeof($roundorder) - 1; $j += 2)
-								echo("<td><span class='team" . ($roundorder[$j] + 14) . "'></span>&nbsp;<br><span class='team" . ($roundorder[$j+1] + 14) . "'></span>&nbsp;</td>");
-							echo("<td><span class='team" . (end($roundorder) + 14) . "'></span>&nbsp;</td>");
+								echo("<td><span class='team" . ($roundorder[$j] + 16) . "'></span>&nbsp;<br><span class='team" . ($roundorder[$j+1] + 16) . "'></span>&nbsp;</td>");
+							echo("<td><span class='team" . (end($roundorder) + 16) . "'></span>&nbsp;</td>");
 							echo("</tr>\n");
 						}
 					?>

@@ -49,7 +49,7 @@
 						$teamorder = array(array(6, 7, 2, 3, 4, 5, 99, 99, 0, 1),
 										   array(4, 6, 1, 3, 0, 2, 99, 99, 5, 7),
 										   array(1, 4, 2, 5, 0, 7, 99, 99, 3, 6),
-										   array(3, 5, 0, 6, 1, 7, 99, 99, 2, 4),
+										   array(1, 7, 0, 6, 3, 5, 99, 99, 2, 4),
 										   array(0, 3, 1, 2, 4, 7, 5, 6, 99, 99),
 										   array(1, 5, 0, 4, 2, 6, 3, 7, 99, 99),
 										   array(2, 7, 1, 6, 3, 4, 0, 5, 99, 99),
@@ -59,7 +59,7 @@
 							echo("<tr><th>" . ($round + 1) . "</th>");
 							for($j = 0; $j < sizeof($roundorder) - 1; $j += 2)
 								echo("<td><span class='team" . ($roundorder[$j] + 9) . "'></span>&nbsp;<br><span class='team" . ($roundorder[$j+1] + 9) . "'></span>&nbsp;</td>");
-							echo("<td><span class='team" . (end($roundorder) + 9) . "'></span>&nbsp;</td>");
+							// echo("<td><span class='team" . (end($roundorder) + 9) . "'></span>&nbsp;</td>");
 							echo("</tr>\n");
 						}
 					?>

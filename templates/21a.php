@@ -11,7 +11,7 @@
 			<div class="schedule center">
 				<table>
 					<thead>
-						<tr><th>Round</th><th class="room0"></th><th class="room1"></th><th class="room2"></tr>
+						<tr><th>Round</th><th class="room0"></th><th class="room1"></th><th class="room2"></th><th>Bye</th></tr>
 					</thead>
 					<tbody>
 					<?php
@@ -40,7 +40,7 @@
 			<div class="schedule center">
 				<table>
 					<thead>
-						<tr><th>Round</th><th class="room3"></th><th class="room4"></th><th class="room5"></tr>
+						<tr><th>Round</th><th class="room3"></th><th class="room4"></th><th class="room5"></th><th>Bye</th></tr>
 					</thead>
 					<tbody>
 					<?php
@@ -62,7 +62,7 @@
 			<div class="schedule center">
 				<table>
 					<thead>
-						<tr><th>Round</th><th class="room6"></th><th class="room7"></th><th class="room8"></tr>
+						<tr><th>Round</th><th class="room6"></th><th class="room7"></th><th class="room8"></th><th>Bye</th></tr>
 					</thead>
 					<tbody>
 					<?php
@@ -108,11 +108,10 @@
 					</thead>
 					<tbody>
 					<?php
-						$teamorder = array(array(2, 3, 1, 4, 0),
-						                   array(3, 4, 0, 2, 1),
-										   array(0, 4, 1, 3, 2),
-										   array(0, 1, 2, 4, 3),
-										   array(1, 2, 0, 3, 4));
+						$teamorder = array(array(0, 5, 3, 4, 1, 2),
+										   array(2, 4, 0, 3, 1, 5),
+										   array(1, 3, 2, 5, 0, 4),
+										   array(0, 2, 1, 4, 3, 5));
 						foreach($teamorder as $round => $roundorder)
 						{
 							echo("<tr><th>" . ($round + 8) . "</th>");
@@ -135,6 +134,11 @@
 					</thead>
 					<tbody>
 					<?php
+						$teamorder = array(array(2, 3, 1, 4, 0),
+						                   array(3, 4, 0, 2, 1),
+										   array(0, 4, 1, 3, 2),
+										   array(0, 1, 2, 4, 3),
+										   array(1, 2, 0, 3, 4));
 						foreach($teamorder as $round => $roundorder)
 						{
 							echo("<tr><th>" . ($round + 8) . "</th>");

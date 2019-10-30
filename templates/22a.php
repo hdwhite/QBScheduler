@@ -164,6 +164,7 @@
 				</table>
 			</div>
 		</div>
+		<h3>&nbsp;</h3>
 		<div class="phaserow">
 			<div class="schedule left">
 				<h3 class="playoffbracket4">&nbsp;</h3>
@@ -184,7 +185,7 @@
 					</tbody>
 				</table>
 			</div>
-			<div class="schedule left">
+			<div class="schedule center">
 				<h3 class="playoffbracket5">&nbsp;</h3>
 				<table>
 					<thead>

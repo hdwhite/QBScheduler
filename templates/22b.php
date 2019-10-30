@@ -27,7 +27,7 @@
 							echo("<tr><th>" . ($round + 1) . "</th>");
 							for($j = 0; $j < sizeof($roundorder) - 1; $j += 2)
 								echo("<td><span class='team" . $roundorder[$j] . "'></span>&nbsp;<br><span class='team" . $roundorder[$j+1] . "'></span>&nbsp;</td>");
-							echo("<td><span class='team" . end($roundorder) . "'></span>&nbsp;</td>");
+							// echo("<td><span class='team" . end($roundorder) . "'></span>&nbsp;</td>");
 							echo("</tr>\n");
 						}
 					?>
@@ -55,8 +55,8 @@
 						{
 							echo("<tr><th>" . ($round + 1) . "</th>");
 							for($j = 0; $j < sizeof($roundorder) - 1; $j += 2)
-								echo("<td><span class='team" . ($roundorder[$j] + 7) . "'></span>&nbsp;<br><span class='team" . ($roundorder[$j+1] + 7) . "'></span>&nbsp;</td>");
-							echo("<td><span class='team" . (end($roundorder) + 7) . "'></span>&nbsp;</td>");
+								echo("<td><span class='team" . ($roundorder[$j] + 8) . "'></span>&nbsp;<br><span class='team" . ($roundorder[$j+1] + 8) . "'></span>&nbsp;</td>");
+							echo("<td><span class='team" . (end($roundorder) + 8) . "'></span>&nbsp;</td>");
 							echo("</tr>\n");
 						}
 					?>
@@ -77,8 +77,8 @@
 						{
 							echo("<tr><th>" . ($round + 1) . "</th>");
 							for($j = 0; $j < sizeof($roundorder) - 1; $j += 2)
-								echo("<td><span class='team" . ($roundorder[$j] + 14) . "'></span>&nbsp;<br><span class='team" . ($roundorder[$j+1] + 14) . "'></span>&nbsp;</td>");
-							echo("<td><span class='team" . (end($roundorder) + 14) . "'></span>&nbsp;</td>");
+								echo("<td><span class='team" . ($roundorder[$j] + 15) . "'></span>&nbsp;<br><span class='team" . ($roundorder[$j+1] + 15) . "'></span>&nbsp;</td>");
+							echo("<td><span class='team" . (end($roundorder) + 15) . "'></span>&nbsp;</td>");
 							echo("</tr>\n");
 						}
 					?>
