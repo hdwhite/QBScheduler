@@ -56,7 +56,7 @@
 							echo("<tr><th>" . ($round + 1) . "</th>");
 							for($j = 0; $j < sizeof($roundorder) - 1; $j += 2)
 								echo("<td><span class='team" . ($roundorder[$j] + 8) . "'></span>&nbsp;<br><span class='team" . ($roundorder[$j+1] + 8) . "'></span>&nbsp;</td>");
-							// echo("<td><span class='team" . end($roundorder) . "'></span>&nbsp;</td>");
+							echo("<td><span class='team" . (end($roundorder) + 8) . "'></span>&nbsp;</td>");
 							echo("</tr>\n");
 						}
 					?>
@@ -93,10 +93,10 @@
 					</thead>
 					<tbody>
 					<?php
-						$teamorder = array(array(1, 5, 0, 4, 2, 6, 3, 7),
-										   array(2, 7, 1, 6, 3, 4, 0, 5),
+						$teamorder = array(array(0, 7, 1, 4, 2, 5, 3, 6),
 										   array(3, 5, 0, 6, 1, 7, 2, 4),
-										   array(1, 4, 2, 5, 3, 6, 0, 7));
+										   array(1, 6, 2, 7, 3, 4, 0, 5),
+										   array(0, 4, 1, 5, 2, 6, 3, 7));
 						foreach($teamorder as $round => $roundorder)
 						{
 							echo("<tr><th>" . ($round + 8) . "</th>");
@@ -127,7 +127,7 @@
 							echo("<tr><th>" . ($round + 8) . "</th>");
 							for($j = 0; $j < sizeof($roundorder) - 1; $j += 2)
 								echo("<td><span class='playoffteam" . ($roundorder[$j] + 8) . "'></span>&nbsp;<br><span class='playoffteam" . ($roundorder[$j+1] + 8) . "'></span>&nbsp;</td>");
-							echo("<td><span class='playoffteam" . end($roundorder) . "'></span>&nbsp;</td></tr>\n");
+							echo("<td><span class='playoffteam" . (end($roundorder) + 8) . "'></span>&nbsp;</td></tr>\n");
 						}
 					?>
 					</tbody>

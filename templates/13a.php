@@ -6,7 +6,7 @@
 		<div class="phaseheader">
 			<h2>Schedule</h2>
 		</div>
-		<div class="schedule center narrow">
+		<div class="schedule center narrower">
 			<table>
 				<thead>
 					<tr><th>Round</th><th class="room0"></th><th class="room1"></th><th class="room2"></th><th class="room3"></th><th class="room4"></th><th class="room5"><th>Bye</th></tr>

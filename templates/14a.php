@@ -11,7 +11,7 @@
 			<div class="schedule center">
 				<table>
 					<thead>
-						<tr><th>Round</th><th class="room0"></th><th class="room1"></th><th class="room2"></tr>
+						<tr><th>Round</th><th class="room0"></th><th class="room1"></th><th class="room2"></th><th>Bye</th></tr>
 					</thead>
 					<tbody>
 					<?php
@@ -40,7 +40,7 @@
 			<div class="schedule center">
 				<table>
 					<thead>
-						<tr><th>Round</th><th class="room3"></th><th class="room4"></th><th class="room5"></tr>
+						<tr><th>Round</th><th class="room3"></th><th class="room4"></th><th class="room5"></th><th>Bye</th></tr>
 					</thead>
 					<tbody>
 					<?php
@@ -49,7 +49,7 @@
 							echo("<tr><th>" . ($round + 1) . "</th>");
 							for($j = 0; $j < sizeof($roundorder) - 1; $j += 2)
 								echo("<td><span class='team" . ($roundorder[$j] + 7) . "'></span>&nbsp;<br><span class='team" . ($roundorder[$j+1] + 7) . "'></span>&nbsp;</td>");
-							echo("<td><span class='team" . end($roundorder) . "'></span>&nbsp;</td>");
+							echo("<td><span class='team" . (end($roundorder) + 7) . "'></span>&nbsp;</td>");
 							echo("</tr>\n");
 						}
 					?>
@@ -104,7 +104,7 @@
 		<h3>&nbsp;</h3>
 		<div class="phaserow">
 			<div class="schedule left">
-				<h3 class="playoffbracket2">&nbsp;</h3>
+				<h3 class="playoffbracket1">&nbsp;</h3>
 				<table>
 					<thead>
 						<tr><th>Round</th><th class="room3"></th><th class="room4"></th></tr>
@@ -112,6 +112,7 @@
 					<tbody>
 					<?php
 						$teamorder = array(array(0, 3, 1, 2),
+						                   array(2, 3, 0, 1),
 						                   array(0, 2, 1, 3));
 						foreach($teamorder as $round => $roundorder)
 						{
@@ -125,7 +126,7 @@
 				</table>
 			</div>
 			<div class="schedule left">
-				<h3 class="playoffbracket3">&nbsp;</h3>
+				<h3 class="playoffbracket2">&nbsp;</h3>
 				<table>
 					<thead>
 						<tr><th>Round</th><th class="room5"></th><th class="room6"></th></tr>

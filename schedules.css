@@ -54,6 +54,11 @@
 	min-width: 150px;
 }
 
+.narrower td
+{
+	min-width: 130px;
+}
+
 .phaseheader h4
 {
 	font-size: 120%
