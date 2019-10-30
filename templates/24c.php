@@ -77,9 +77,31 @@
 				</table>
 			</div>
 		</div>
+		<h3 class="prelimbracket3">&nbsp;</h3>
+		<div class="phaserow">
+			<div class="schedule center">
+				<table>
+					<thead>
+						<tr><th>Round</th><th class="room9"></th><th class="room10"></th><th class="room11"></tr>
+					</thead>
+					<tbody>
+					<?php
+						foreach($teamorder as $round => $roundorder)
+						{
+							echo("<tr><th>" . ($round + 1) . "</th>");
+							for($j = 0; $j < sizeof($roundorder) - 1; $j += 2)
+								echo("<td><span class='team" . ($roundorder[$j] + 18) . "'></span>&nbsp;<br><span class='team" . ($roundorder[$j+1] + 18) . "'></span>&nbsp;</td>");
+							// echo("<td><span class='team" . end($roundorder) . "'></span>&nbsp;</td>");
+							echo("</tr>\n");
+						}
+					?>
+					</tbody>
+				</table>
+			</div>
+		</div>
 	</div>
 	<div class="instruction">
-		<p>Teams will be initially seeded into three brackets of six, in which they will play a full round-robin. Afterwards, teams will be placed into playoff brackets based on their performance in the preliminary rounds. Each team will once again play a round-robin within their new bracket, with the exception of the team they played in the prelims. Only games against teams in the same playoff bracket will count towards final standing within each bracket. Finals in the top bracket will be played according to the following criteria:</p>
+		<p>Teams will be initially seeded into four brackets of six, in which they will play a full round-robin. Afterwards, teams will be placed into three playoff brackets of 8 based on their performance in the preliminary rounds. Each team will once again play a round-robin within their new bracket, with the exception of the team they played in the prelims. Only games against teams in the same playoff bracket will count towards final standing within each bracket. Finals in the top bracket will be played according to the following criteria:</p>
 		<ul>
 			<div class="finals2 finals3" style="display:none"><li>If the first-place team has two or more wins than every other team, then that team wins the tournament outright without the need for a final.</li></div>
 			<div class="finals1" style="display:none"><li>If there is a single team with the best record, then that team wins the tournament outright without the need for a final.</li></div>
@@ -102,14 +124,16 @@
 			<div class="schedule center">
 				<table>
 					<thead>
-						<tr><th>Round</th><th class="room0"></th><th class="room1"></th><th class="room2"></th></tr>
+						<tr><th>Round</th><th class="room0"></th><th class="room1"></th><th class="room2"></th><th class="room3"></th></tr>
 					</thead>
 					<tbody>
 					<?php
-						$teamorder = array(array(0, 5, 3, 4, 1, 2),
-										   array(2, 4, 0, 3, 1, 5),
-										   array(1, 3, 2, 5, 0, 4),
-										   array(0, 2, 1, 4, 3, 5));
+						$teamorder = array(array(1, 6, 2, 7, 3, 4, 0, 5),
+										   array(0, 3, 4, 7, 1, 2, 5, 6),
+										   array(1, 4, 2, 5, 3, 6, 0, 7),
+										   array(0, 4, 1, 5, 2, 6, 3, 7),
+										   array(3, 5, 0, 6, 1, 7, 2, 4),
+						                   array(4, 6, 5, 7, 0, 2, 1, 3));
 						foreach($teamorder as $round => $roundorder)
 						{
 							echo("<tr><th>" . ($round + 6) . "</th>");
@@ -127,7 +151,7 @@
 			<div class="schedule center">
 				<table>
 					<thead>
-						<tr><th>Round</th><th class="room3"></th><th class="room4"></th><th class="room5"></th></tr>
+						<tr><th>Round</th><th class="room4"></th><th class="room5"></th><th class="room6"></th><th class="room7"></th></tr>
 					</thead>
 					<tbody>
 					<?php
@@ -135,7 +159,7 @@
 						{
 							echo("<tr><th>" . ($round + 6) . "</th>");
 							for($j = 0; $j < sizeof($roundorder) - 1; $j += 2)
-								echo("<td><span class='playoffteam" . ($roundorder[$j] + 6) . "'></span>&nbsp;<br><span class='playoffteam" . ($roundorder[$j+1] + 6) . "'></span>&nbsp;</td>");
+								echo("<td><span class='playoffteam" . ($roundorder[$j] + 8) . "'></span>&nbsp;<br><span class='playoffteam" . ($roundorder[$j+1] + 8) . "'></span>&nbsp;</td>");
 							// echo("<td><span class='playoffteam" . end($roundorder) . "'></span>&nbsp;</td></tr>\n");
 						}
 					?>
@@ -148,7 +172,7 @@
 			<div class="schedule center">
 				<table>
 					<thead>
-						<tr><th>Round</th><th class="room6"></th><th class="room7"></th><th class="room8"></th></tr>
+						<tr><th>Round</th><th class="room8"></th><th class="room9"></th><th class="room10"></th><th class="room11"></th></tr>
 					</thead>
 					<tbody>
 					<?php
@@ -156,7 +180,7 @@
 						{
 							echo("<tr><th>" . ($round + 6) . "</th>");
 							for($j = 0; $j < sizeof($roundorder) - 1; $j += 2)
-								echo("<td><span class='playoffteam" . ($roundorder[$j] + 12) . "'></span>&nbsp;<br><span class='playoffteam" . ($roundorder[$j+1] + 12) . "'></span>&nbsp;</td>");
+								echo("<td><span class='playoffteam" . ($roundorder[$j] + 16) . "'></span>&nbsp;<br><span class='playoffteam" . ($roundorder[$j+1] + 16) . "'></span>&nbsp;</td>");
 							// echo("<td><span class='playoffteam" . end($roundorder) . "'></span>&nbsp;</td></tr>\n");
 						}
 					?>

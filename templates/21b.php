@@ -11,21 +11,23 @@
 			<div class="schedule center">
 				<table>
 					<thead>
-						<tr><th>Round</th><th class="room0"></th><th class="room1"></th><th class="room2"></tr>
+						<tr><th>Round</th><th class="room0"></th><th class="room1"></th><th class="room2"></th><th>Bye</th></tr>
 					</thead>
 					<tbody>
 					<?php
-						$teamorder = array(array(0, 1, 2, 3, 4, 5),
-										   array(3, 5, 1, 4, 0, 2),
-										   array(2, 4, 0, 3, 1, 5),
-										   array(1, 3, 2, 5, 0, 4),
-										   array(0, 5, 3, 4, 1, 2));
+						$teamorder = array(array(3, 4, 2, 5, 1, 6, 0),
+										   array(4, 5, 3, 6, 0, 2, 1),
+										   array(5, 6, 0, 4, 1, 3, 2),
+										   array(0, 6, 1, 5, 2, 4, 3),
+										   array(0, 1, 2, 6, 3, 5, 4),
+										   array(1, 2, 0, 3, 4, 6, 5),
+										   array(2, 3, 1, 4, 0, 5, 6));
 						foreach($teamorder as $round => $roundorder)
 						{
 							echo("<tr><th>" . ($round + 1) . "</th>");
 							for($j = 0; $j < sizeof($roundorder) - 1; $j += 2)
 								echo("<td><span class='team" . $roundorder[$j] . "'></span>&nbsp;<br><span class='team" . $roundorder[$j+1] . "'></span>&nbsp;</td>");
-							// echo("<td><span class='team" . end($roundorder) . "'></span>&nbsp;</td>");
+							echo("<td><span class='team" . end($roundorder) . "'></span>&nbsp;</td>");
 							echo("</tr>\n");
 						}
 					?>
@@ -38,7 +40,7 @@
 			<div class="schedule center">
 				<table>
 					<thead>
-						<tr><th>Round</th><th class="room3"></th><th class="room4"></th><th class="room5"></tr>
+						<tr><th>Round</th><th class="room3"></th><th class="room4"></th><th class="room5"></th><th>Bye</th></tr>
 					</thead>
 					<tbody>
 					<?php
@@ -46,8 +48,8 @@
 						{
 							echo("<tr><th>" . ($round + 1) . "</th>");
 							for($j = 0; $j < sizeof($roundorder) - 1; $j += 2)
-								echo("<td><span class='team" . ($roundorder[$j] + 6) . "'></span>&nbsp;<br><span class='team" . ($roundorder[$j+1] + 6) . "'></span>&nbsp;</td>");
-							// echo("<td><span class='team" . end($roundorder) . "'></span>&nbsp;</td>");
+								echo("<td><span class='team" . ($roundorder[$j] + 7) . "'></span>&nbsp;<br><span class='team" . ($roundorder[$j+1] + 7) . "'></span>&nbsp;</td>");
+							echo("<td><span class='team" . (end($roundorder) + 7) . "'></span>&nbsp;</td>");
 							echo("</tr>\n");
 						}
 					?>
@@ -60,7 +62,7 @@
 			<div class="schedule center">
 				<table>
 					<thead>
-						<tr><th>Round</th><th class="room6"></th><th class="room7"></th><th class="room8"></tr>
+						<tr><th>Round</th><th class="room6"></th><th class="room7"></th><th class="room8"></th><th>Bye</th></tr>
 					</thead>
 					<tbody>
 					<?php
@@ -68,8 +70,8 @@
 						{
 							echo("<tr><th>" . ($round + 1) . "</th>");
 							for($j = 0; $j < sizeof($roundorder) - 1; $j += 2)
-								echo("<td><span class='team" . ($roundorder[$j] + 12) . "'></span>&nbsp;<br><span class='team" . ($roundorder[$j+1] + 12) . "'></span>&nbsp;</td>");
-							// echo("<td><span class='team" . end($roundorder) . "'></span>&nbsp;</td>");
+								echo("<td><span class='team" . ($roundorder[$j] + 14) . "'></span>&nbsp;<br><span class='team" . ($roundorder[$j+1] + 14) . "'></span>&nbsp;</td>");
+							echo("<td><span class='team" . (end($roundorder) + 14) . "'></span>&nbsp;</td>");
 							echo("</tr>\n");
 						}
 					?>
@@ -79,7 +81,7 @@
 		</div>
 	</div>
 	<div class="instruction">
-		<p>Teams will be initially seeded into three brackets of six, in which they will play a full round-robin. Afterwards, teams will be placed into playoff brackets based on their performance in the preliminary rounds. Each team will once again play a round-robin within their new bracket, with the exception of the team they played in the prelims. Only games against teams in the same playoff bracket will count towards final standing within each bracket. Finals in the top bracket will be played according to the following criteria:</p>
+		<p>Teams will be initially seeded into three brackets of 7, in which they will play a six-game round-robin. Afterwards, the teams will be placed into playoff brackets of 9, 6, and 6 teams, respectively, based on their performance in the preliminary rounds. Each team will once again play a round-robin within their new bracket, with the excepion of the team they played in the prelims. Only games played against teams in the same playoff bracket will count towards final standing within each bracket. Finals in the top bracket will be played according to the following criteria:</p>
 		<ul>
 			<div class="finals2 finals3" style="display:none"><li>If the first-place team has two or more wins than every other team, then that team wins the tournament outright without the need for a final.</li></div>
 			<div class="finals1" style="display:none"><li>If there is a single team with the best record, then that team wins the tournament outright without the need for a final.</li></div>
@@ -102,7 +104,39 @@
 			<div class="schedule center">
 				<table>
 					<thead>
-						<tr><th>Round</th><th class="room0"></th><th class="room1"></th><th class="room2"></th></tr>
+						<tr><th>Round</th><th class="room0"></th><th class="room1"></th><th class="room2"></th><th class="room3"></th><th>Bye</th></tr>
+					</thead>
+					<tbody>
+					<?php
+						$teamorder = array(array(0, 5, 4, 6, 2, 7, 1, 8, 3),
+						                   array(1, 4, 0, 8, 5, 6, 2, 3, 7),
+										   array(2, 6, 4, 7, 1, 3, 5, 8, 0),
+										   array(2, 8, 1, 5, 0, 4, 3, 7, 6),
+										   array(1, 7, 3, 8, 2, 4, 0, 6, 5),
+										   array(0, 3, 1, 6, 5, 7, 4, 8, 2),
+										   array(3, 6, 0, 7, 2, 5, 99, 99, 1));
+						foreach($teamorder as $round => $roundorder)
+						{
+							echo("<tr><th>" . ($round + 8) . "</th>");
+							for($j = 0; $j < sizeof($roundorder) - 1; $j += 2)
+								echo("<td><span class='playoffteam" . $roundorder[$j] . "'></span>&nbsp;<br><span class='playoffteam" . $roundorder[$j+1] . "'></span>&nbsp;</td>");
+							if($round < 6)
+								echo("<td><span class='playoffteam" . end($roundorder) . "'></span>&nbsp;</td></tr>\n");
+							else
+								echo("<td><span class='playoffteam" . end($roundorder) . "'></span>&nbsp;<br><span class='playoffteam4'></span>&nbsp;<br><span class='playoffteam8'></span>&nbsp;</td></tr>\n");
+						}
+					?>
+					</tbody>
+				</table>
+			</div>
+		</div>
+		<h3>&nbsp;</h3>
+		<div class="phaserow">
+			<div class="schedule center">
+				<h3 class="playoffbracket1">&nbsp;</h3>
+				<table>
+					<thead>
+						<tr><th>Round</th><th class="room4"></th><th class="room5"></th><th class="room6"></th></tr>
 					</thead>
 					<tbody>
 					<?php
@@ -112,9 +146,9 @@
 										   array(0, 2, 1, 4, 3, 5));
 						foreach($teamorder as $round => $roundorder)
 						{
-							echo("<tr><th>" . ($round + 6) . "</th>");
+							echo("<tr><th>" . ($round + 8) . "</th>");
 							for($j = 0; $j < sizeof($roundorder) - 1; $j += 2)
-								echo("<td><span class='playoffteam" . $roundorder[$j] . "'></span>&nbsp;<br><span class='playoffteam" . $roundorder[$j+1] . "'></span>&nbsp;</td>");
+								echo("<td><span class='playoffteam" . ($roundorder[$j] + 9) . "'></span>&nbsp;<br><span class='playoffteam" . ($roundorder[$j+1] + 9) . "'></span>&nbsp;</td>");
 							// echo("<td><span class='playoffteam" . end($roundorder) . "'></span>&nbsp;</td></tr>\n");
 						}
 					?>
@@ -122,41 +156,21 @@
 				</table>
 			</div>
 		</div>
-		<h3 class="playoffbracket1">&nbsp;</h3>
+		<h3>&nbsp;</h3>
 		<div class="phaserow">
 			<div class="schedule center">
+				<h3 class="playoffbracket2">&nbsp;</h3>
 				<table>
 					<thead>
-						<tr><th>Round</th><th class="room3"></th><th class="room4"></th><th class="room5"></th></tr>
+						<tr><th>Round</th><th class="room7"></th><th class="room8"></th><th class="room9"></th></tr>
 					</thead>
 					<tbody>
 					<?php
 						foreach($teamorder as $round => $roundorder)
 						{
-							echo("<tr><th>" . ($round + 6) . "</th>");
+							echo("<tr><th>" . ($round + 8) . "</th>");
 							for($j = 0; $j < sizeof($roundorder) - 1; $j += 2)
-								echo("<td><span class='playoffteam" . ($roundorder[$j] + 6) . "'></span>&nbsp;<br><span class='playoffteam" . ($roundorder[$j+1] + 6) . "'></span>&nbsp;</td>");
-							// echo("<td><span class='playoffteam" . end($roundorder) . "'></span>&nbsp;</td></tr>\n");
-						}
-					?>
-					</tbody>
-				</table>
-			</div>
-		</div>
-		<h3 class="playoffbracket2">&nbsp;</h3>
-		<div class="phaserow">
-			<div class="schedule center">
-				<table>
-					<thead>
-						<tr><th>Round</th><th class="room6"></th><th class="room7"></th><th class="room8"></th></tr>
-					</thead>
-					<tbody>
-					<?php
-						foreach($teamorder as $round => $roundorder)
-						{
-							echo("<tr><th>" . ($round + 6) . "</th>");
-							for($j = 0; $j < sizeof($roundorder) - 1; $j += 2)
-								echo("<td><span class='playoffteam" . ($roundorder[$j] + 12) . "'></span>&nbsp;<br><span class='playoffteam" . ($roundorder[$j+1] + 12) . "'></span>&nbsp;</td>");
+								echo("<td><span class='playoffteam" . ($roundorder[$j] + 15) . "'></span>&nbsp;<br><span class='playoffteam" . ($roundorder[$j+1] + 15) . "'></span>&nbsp;</td>");
 							// echo("<td><span class='playoffteam" . end($roundorder) . "'></span>&nbsp;</td></tr>\n");
 						}
 					?>
