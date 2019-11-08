@@ -1,6 +1,7 @@
 <?php
 require_once("dbnames.inc");
 require_once($_dbconfig);
+require_once("templates/brackets.php");
 $schedulequery = $mysqli->query("SELECT * FROM $_templatedb " .
 	"ORDER BY teams ASC, games ASC, rounds ASC") or die($mysqli->error);
 $schedulelist = array();

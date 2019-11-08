@@ -3,6 +3,7 @@ $urlarray = explode("/", $_SERVER['REQUEST_URI']);
 $tournamentid = htmlentities($urlarray[3]);
 require_once("dbnames.inc");
 require_once($_dbconfig);
+require_once("templates/brackets.php");
 $scheduleinfo = $mysqli->query("SELECT * FROM $_scheduledb WHERE id=$tournamentid")->fetch_assoc();
 if(is_null($scheduleinfo))
 	exit();
