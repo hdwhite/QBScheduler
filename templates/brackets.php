@@ -8,13 +8,13 @@ function createBracket($params)
 		echo("ERROR: Please set number of teams.");
 		exit;
 	}
-	$teamoffset = (array_key_exists("teamoffset", $params) ? $params['teamoffset'] : 0)
-	$roomoffset = (array_key_exists("roomoffset", $params) ? $params['roomoffset'] : 0)
-	$firstround = (array_key_exists("firstround", $params) ? $params['firstround'] : 1)
-	$crossovers = (array_key_exists("crossovers", $params) ? $params['crossovers'] : 0)
-	$byestyle   = (array_key_exists("byestyle", $params)   ? $params['byestyle']   : 0)
-	$iterations = (array_key_exists("iterations", $params) ? $params['iterations'] : 1)
-	$inplaceplayoffs = (array_key_exists("inplaceplayoffs", $params) ? $params['inplaceplayoffs'] : 0)
+	$teamoffset = (array_key_exists("teamoffset", $params) ? $params['teamoffset'] : 0);
+	$roomoffset = (array_key_exists("roomoffset", $params) ? $params['roomoffset'] : 0);
+	$firstround = (array_key_exists("firstround", $params) ? $params['firstround'] : 1);
+	$crossovers = (array_key_exists("crossovers", $params) ? $params['crossovers'] : 0);
+	$byestyle   = (array_key_exists("byestyle", $params)   ? $params['byestyle']   : 0);
+	$iterations = (array_key_exists("iterations", $params) ? $params['iterations'] : 1);
+	$inplaceplayoffs = (array_key_exists("inplaceplayoffs", $params) ? $params['inplaceplayoffs'] : 0);
 	
 	$tableheader = "<thead><tr><th>Round</th>";
 	switch($numteams)
@@ -100,9 +100,9 @@ function createBracket($params)
 			break;
 		}
 		if($inplaceplayoffs == 1)
-			$teamorder = array(array(2, 3, 4, 5, 1),
-		                       array(1, 3, 4, 5, 2),
-							   array(1, 2, 99, 99, 3));
+			$teamorder = array(array(1, 2, 3, 4, 0),
+		                       array(0, 2, 3, 4, 1),
+							   array(0, 1, 99, 99, 2));
 		break;
 	case 6:
 		$numrooms = 3;

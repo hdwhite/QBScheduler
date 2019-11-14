@@ -43,16 +43,16 @@
 			</div>
 			<table id="teamtable">
 				<tr>
-					<?php for($i = 0; $i < 4; $i++) echo("<td><input type='text' name='prelimBracket$i' id='prelimBracket$i' class='teaminput' placeholder='Bracket name' style='width:185px; display:none;' value='" . $_POST['prelimBracket' . $i] . "'></td>"); ?>
+					<?php for($i = 0; $i < 4; $i++) echo("<td><input type='text' name='prelimBracket$i' id='prelimBracket$i' class='teaminput' placeholder='Bracket name' style='width:185px; display:none;'></td>"); ?>
 				</tr>
 				<tr>
-					<?php for($i = 0; $i < 4; $i++) echo("<td style='vertical-align:top;'><textarea type='text' name='teams$i' id='teams$i' class='teaminput' placeholder='Team names (one per line)' rows='8' style='width:185px; display:none; overflow:hidden;'>" . $_POST['teams' . $i] . "</textarea></td>"); ?>
+					<?php for($i = 0; $i < 4; $i++) echo("<td style='vertical-align:top;'><textarea type='text' name='teams$i' id='teams$i' class='teaminput' placeholder='Team names (one per line)' rows='8' style='width:185px; display:none; overflow:hidden;'></textarea></td>"); ?>
 				</tr>
 				<tr>
-					<?php for($i = 4; $i < 8; $i++) echo("<td><input type='text' name='prelimBracket$i' id='prelimBracket$i' class='teaminput' placeholder='Bracket name' style='width:185px; display:none;' value='" . $_POST['prelimBracket' . $i] . "'></td>"); ?>
+					<?php for($i = 4; $i < 8; $i++) echo("<td><input type='text' name='prelimBracket$i' id='prelimBracket$i' class='teaminput' placeholder='Bracket name' style='width:185px; display:none;'></td>"); ?>
 				</tr>
 				<tr>
-					<?php for($i = 4; $i < 8; $i++) echo("<td style='vertical-align:top;'><textarea type='text' name='teams$i' id='teams$i' class='teaminput' placeholder='Team names (one per line)' rows='8' style='width:185px; display:none; overflow:hidden;'>" . $_POST['teams' . $i] . "</textarea></td>"); ?>
+					<?php for($i = 4; $i < 8; $i++) echo("<td style='vertical-align:top;'><textarea type='text' name='teams$i' id='teams$i' class='teaminput' placeholder='Team names (one per line)' rows='8' style='width:185px; display:none; overflow:hidden;'></textarea></td>"); ?>
 				</tr>
 			</table>
 			<div class="playoffBrackets" style="display:none;">
@@ -60,28 +60,28 @@
 				<p><b>Playoff team and bracket names:</b></p>
 				<table id="playofftable">
 					<tr>
-						<?php for($i = 0; $i < 4; $i++) echo("<td><input type='text' name='playoffBracket$i' id='playoffBracket$i' class='teaminput' placeholder='Bracket name' style='width:185px; display:none;' value='" . $_POST['playoffBracket' . $i] . "'></td>"); ?>
+						<?php for($i = 0; $i < 4; $i++) echo("<td><input type='text' name='playoffBracket$i' id='playoffBracket$i' class='teaminput' placeholder='Bracket name' style='width:185px; display:none;'></td>"); ?>
 					</tr>
 					<tr>
-						<?php for($i = 0; $i < 4; $i++) echo("<td style='vertical-align:top;'><textarea type='text' name='playoffteams$i' id='playoffteams$i' class='teaminput' placeholder='Team names (one per line)' rows='8' style='width:185px; display:none; overflow:hidden;'>" . $_POST['playoffteams' . $i] . "</textarea></td>"); ?>
+						<?php for($i = 0; $i < 4; $i++) echo("<td style='vertical-align:top;'><textarea type='text' name='playoffteams$i' id='playoffteams$i' class='teaminput' placeholder='Team names (one per line)' rows='8' style='width:185px; display:none; overflow:hidden;'></textarea></td>"); ?>
 					</tr>
 					<tr>
-						<?php for($i = 4; $i < 8; $i++) echo("<td><input type='text' name='playoffBracket$i' id='playoffBracket$i' class='teaminput' placeholder='Bracket name' style='width:185px; display:none;' value='" . $_POST['playoffBracket' . $i] . "'></td>"); ?>
+						<?php for($i = 4; $i < 8; $i++) echo("<td><input type='text' name='playoffBracket$i' id='playoffBracket$i' class='teaminput' placeholder='Bracket name' style='width:185px; display:none;'></td>"); ?>
 					</tr>
 					<tr>
-						<?php for($i = 4; $i < 8; $i++) echo("<td style='vertical-align:top;'><textarea type='text' name='playoffteams$i' id='playoffteams$i' class='teaminput' placeholder='Team names (one per line)' rows='8' style='width:185px; display:none; overflow:hidden;'>" . $_POST['playoffteams' . $i] . "</textarea></td>"); ?>
+						<?php for($i = 4; $i < 8; $i++) echo("<td style='vertical-align:top;'><textarea type='text' name='playoffteams$i' id='playoffteams$i' class='teaminput' placeholder='Team names (one per line)' rows='8' style='width:185px; display:none; overflow:hidden;'></textarea></td>"); ?>
 					</tr>
 				</table>
 				<p>Playoff brackets are sequentially ordered such that the top bracket is on the left. Within each playoff bracket, it is important that all teams from a given prelim bracket are listed next to each other.</p>
 				<?php } else { ?>
 				<p><b>Playoff bracket names:</b></p>
-				<textarea type="text" name="playoffBrackets" id="playoffBrackets" placeholder="Playoff bracket names (one per line)" rows="2" style="width:185px; overflow:hidden;"><?=$_POST['playoffBrackets'] ?></textarea>
+				<textarea type="text" name="playoffBrackets" id="playoffBrackets" placeholder="Playoff bracket names (one per line)" rows="2" style="width:185px; overflow:hidden;"></textarea>
 				<?php } ?>
 			</div>
 		</div>
 		<div id="roomblock" class="roomblock" style="display:none;">
 			<p><b>Rooms:</b></p>
-			<textarea name="rooms" id="rooms" rows="8" style="width:185px;" required><?php echo($_POST['rooms']); ?></textarea><br>
+			<textarea name="rooms" id="rooms" rows="8" style="width:185px;" required></textarea><br>
 		</div>
 		<div id="rrfinals" class="roomblock finalsformat" style="display:none;">
 			<br><p><b>Number of finals matches:</b></p>
