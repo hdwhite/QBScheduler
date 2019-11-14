@@ -1,3 +1,8 @@
+<?php
+$bracketparams = array();
+$bracketparams['numteams'] = 7;
+$bracketparams['iterations'] = 2;
+?>
 <div class="scontainer">
 	<div class="name">
 		<h2 class="tourneyname">&nbsp;</h2>
@@ -7,36 +12,7 @@
 			<h2>Schedule</h2>
 		</div>
 		<div class="schedule center">
-			<table>
-				<thead>
-					<tr><th>Round</th><th class="room0"></th><th class="room1"></th><th class="room2"></th><th>Bye</th></tr>
-				</thead>
-				<tbody>
-				<?php
-					$teamorder = array(array(3, 4, 2, 5, 1, 6, 0),
-					                   array(4, 5, 3, 6, 0, 2, 1),
-									   array(5, 6, 0, 4, 1, 3, 2),
-									   array(0, 6, 1, 5, 2, 4, 3),
-									   array(0, 1, 2, 6, 3, 5, 4),
-									   array(1, 2, 0, 3, 4, 6, 5),
-									   array(2, 3, 1, 4, 0, 5, 6),
-									   array(3, 4, 2, 5, 1, 6, 0),
-									   array(4, 5, 3, 6, 0, 2, 1),
-									   array(5, 6, 0, 4, 1, 3, 2),
-									   array(0, 6, 1, 5, 2, 4, 3),
-									   array(0, 1, 2, 6, 3, 5, 4),
-									   array(1, 2, 0, 3, 4, 6, 5),
-									   array(2, 3, 1, 4, 0, 5, 6));
-					foreach($teamorder as $round => $roundorder)
-					{
-						echo("<tr><th>" . ($round + 1) . "</th>");
-						for($j = 0; $j < sizeof($roundorder) - 1; $j += 2)
-							echo("<td><span class='team" . $roundorder[$j] . "'></span>&nbsp;<br><span class='team" . $roundorder[$j+1] . "'></span>&nbsp;</td>");
-						echo("<td><span class='team" . end($roundorder) . "'></span>&nbsp;</td></tr>\n");
-					}
-				?>
-				</tbody>
-			</table>
+			<?php echo(createBracket($bracketparams)); ?>
 		</div>
 	</div>
 	<div class="instruction">

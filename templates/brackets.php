@@ -1,5 +1,5 @@
 <?php
-function createBracket($numteams, $teamoffset = 0, $roomoffset = 0, $firstround = 1, $crossovers = 0, $byestyle = 0, $iterations = 1)
+function createBracket($numteams, $teamoffset = 0, $roomoffset = 0, $firstround = 1, $crossovers = 0, $byestyle = 0, $iterations = 1, $inplaceplayoffs = 0)
 {
 	$tableheader = "<thead><tr><th>Round</th>";
 	switch($numteams)
@@ -51,7 +51,75 @@ function createBracket($numteams, $teamoffset = 0, $roomoffset = 0, $firstround 
 								   array(2, 3, 0, 1));
 				break;
 			}
+			break;
 		}
+		break;
+	case 5:
+		$numrooms = 2;
+		$hasbye = 1;
+		switch($crossovers)
+		{
+		case 0:
+			switch($iterations)
+			{
+			case 1:
+				$teamorder = array(array(2, 3, 1, 4, 0),
+				                   array(3, 4, 0, 2, 1),
+								   array(0, 4, 1, 3, 2),
+								   array(0, 1, 2, 4, 3),
+								   array(1, 2, 0, 3, 4));
+				break;
+			case 2:
+				$teamorder = array(array(2, 3, 1, 4, 0),
+				                   array(3, 4, 0, 2, 1),
+								   array(0, 4, 1, 3, 2),
+								   array(0, 1, 2, 4, 3),
+								   array(1, 2, 0, 3, 4),
+				                   array(2, 3, 1, 4, 0),
+				                   array(3, 4, 0, 2, 1),
+								   array(0, 4, 1, 3, 2),
+								   array(0, 1, 2, 4, 3),
+								   array(1, 2, 0, 3, 4));
+				break;
+			}
+			break;
+		}
+		if($inplaceplayoffs == 1)
+			$teamorder = array(array(2, 3, 4, 5, 1),
+		                       array(1, 3, 4, 5, 2),
+							   array(1, 2, 99, 99, 3));
+		break;
+	case 6:
+		$numrooms = 3;
+		$hasbye = 0;
+		switch($crossovers)
+		{
+		case 0:
+			switch($iterations)
+			{
+			case 1:
+				$teamorder = array(array(0, 1, 2, 3, 4, 5),
+								   array(3, 5, 1, 4, 0, 2),
+								   array(2, 4, 0, 3, 1, 5),
+								   array(1, 3, 2, 5, 0, 4),
+								   array(0, 5, 3, 4, 1, 2));
+				break;
+			case 2:
+				$teamorder = array(array(0, 1, 2, 3, 4, 5),
+								   array(3, 5, 1, 4, 0, 2),
+								   array(2, 4, 0, 3, 1, 5),
+								   array(1, 3, 2, 5, 0, 4),
+								   array(0, 5, 3, 4, 1, 2),
+								   array(4, 5, 0, 1, 2, 3),
+								   array(0, 2, 3, 5, 1, 4),
+								   array(1, 5, 2, 4, 0, 3),
+								   array(0, 4, 1, 3, 2, 5),
+								   array(1, 2, 0, 5, 3, 4));
+				break;
+			}
+			break;
+		}
+		break;
 	}
 	
 	for($i = 0; $i < $numrooms; $i++)

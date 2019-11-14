@@ -1,3 +1,8 @@
+<?php
+$bracketparams = array();
+$bracketparams['numteams'] = 4;
+$bracketparams['iterations'] = 3;
+?>
 <div class="scontainer">
 	<div class="name">
 		<h2 class="tourneyname">&nbsp;</h2>
@@ -7,7 +12,7 @@
 			<h2>Schedule</h2>
 		</div>
 		<div class="schedule center">
-			<?php echo(createBracket(4, 0, 0, 1, 0, 0, 3)); ?>
+			<?php echo(createBracket($bracketparams)); ?>
 		</div>
 	</div>
 	<div class="instruction">

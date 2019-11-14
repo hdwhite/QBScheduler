@@ -1,3 +1,8 @@
+<?php
+$bracketparams = array();
+$bracketparams['numteams'] = 4;
+$bracketparams['iterations'] = 4;
+?>
 <div class="scontainer">
 	<div class="name">
 		<h2 class="tourneyname">&nbsp;</h2>
@@ -7,25 +12,7 @@
 			<h2>Schedule</h2>
 		</div>
 		<div class="schedule center">
-			<table>
-				<thead>
-					<tr><th>Round</th><th class="room0"></th><th class="room1"></th></tr>
-				</thead>
-				<tbody>
-					<tr><th>1</th><td><span class="team1"></span>&nbsp;<br><span class="team3"></span>&nbsp;</td><td><span class="team0"></span>&nbsp;<br><span class="team2"></span>&nbsp;</td></tr>
-					<tr><th>2</th><td><span class="team1"></span>&nbsp;<br><span class="team2"></span>&nbsp;</td><td><span class="team0"></span>&nbsp;<br><span class="team3"></span>&nbsp;</td></tr>
-					<tr><th>3</th><td><span class="team0"></span>&nbsp;<br><span class="team1"></span>&nbsp;</td><td><span class="team3"></span>&nbsp;<br><span class="team2"></span>&nbsp;</td></tr>
-					<tr><th>4</th><td><span class="team0"></span>&nbsp;<br><span class="team2"></span>&nbsp;</td><td><span class="team1"></span>&nbsp;<br><span class="team3"></span>&nbsp;</td></tr>
-					<tr><th>5</th><td><span class="team0"></span>&nbsp;<br><span class="team3"></span>&nbsp;</td><td><span class="team1"></span>&nbsp;<br><span class="team2"></span>&nbsp;</td></tr>
-					<tr><th>6</th><td><span class="team2"></span>&nbsp;<br><span class="team3"></span>&nbsp;</td><td><span class="team0"></span>&nbsp;<br><span class="team1"></span>&nbsp;</td></tr>
-					<tr><th>7</th><td><span class="team1"></span>&nbsp;<br><span class="team3"></span>&nbsp;</td><td><span class="team0"></span>&nbsp;<br><span class="team2"></span>&nbsp;</td></tr>
-					<tr><th>8</th><td><span class="team0"></span>&nbsp;<br><span class="team3"></span>&nbsp;</td><td><span class="team1"></span>&nbsp;<br><span class="team2"></span>&nbsp;</td></tr>
-					<tr><th>9</th><td><span class="team0"></span>&nbsp;<br><span class="team1"></span>&nbsp;</td><td><span class="team2"></span>&nbsp;<br><span class="team3"></span>&nbsp;</td></tr>
-					<tr><th>10</th><td><span class="team0"></span>&nbsp;<br><span class="team2"></span>&nbsp;</td><td><span class="team1"></span>&nbsp;<br><span class="team3"></span>&nbsp;</td></tr>
-					<tr><th>11</th><td><span class="team1"></span>&nbsp;<br><span class="team2"></span>&nbsp;</td><td><span class="team0"></span>&nbsp;<br><span class="team3"></span>&nbsp;</td></tr>
-					<tr><th>12</th><td><span class="team2"></span>&nbsp;<br><span class="team3"></span>&nbsp;</td><td><span class="team0"></span>&nbsp;<br><span class="team1"></span>&nbsp;</td></tr>
-				</tbody>
-			</table>
+			<?php echo(createBracket($bracketparams)); ?>
 		</div>
 	</div>
 	<div class="instruction">
