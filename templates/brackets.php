@@ -254,9 +254,13 @@ function createBracket($params)
 			break;
 		}
 		if($inplaceplayoffs == 1)
-		$teamorder = array(array(0, 3, 1, 2, 5, 6, 8, 9, 4, 7),
-						   array(1, 3, 0, 2, 4, 6, 7, 9, 5, 8),
-						   array(0, 1, 2, 3, 4, 5, 7, 8, 6, 9));
+		{
+			$numrooms = 4;
+			$hasbye = 1;
+			$teamorder = array(array(0, 3, 1, 2, 5, 6, 8, 9, 4, 7),
+							   array(1, 3, 0, 2, 4, 6, 7, 9, 5, 8),
+							   array(0, 1, 2, 3, 4, 5, 7, 8, 6, 9));
+		}
 		break;
 	case 11:
 		$numrooms = 5;
@@ -297,17 +301,18 @@ function createBracket($params)
 	$tableheader = $tableheader . "</tr></thead>";
 	
 	$tablebody = array();
+	$tphase = ($firstround > 1 ? "playoffteam" : "team");
 	foreach($teamorder as $round => $roundorder)
 	{
 		$tablebody[$round] = "<tr><th>" . ($round + $firstround) . "</th>";
 		for($j = 0; $j < $numrooms; $j++)
-			$tablebody[$round] .= "<td><span class='team" . ($roundorder[2*$j] + $teamoffset) . "'></span>&nbsp;<br>" .
-			                          "<span class='team" . ($roundorder[2*$j+1]+$teamoffset) . "'></span>&nbsp;</td>";
+			$tablebody[$round] .= "<td><span class='$tphase" . ($roundorder[2*$j] + $teamoffset) . "'></span>&nbsp;<br>" .
+			                          "<span class='$tphase" . ($roundorder[2*$j+1]+$teamoffset) . "'></span>&nbsp;</td>";
 		if($hasbye == 1)
 		{
-			$tablebody[$round] .= "<td><span class='team" . ($roundorder[2*$numrooms] + $teamoffset) . "'></span>&nbsp;";
+			$tablebody[$round] .= "<td><span class='$tphase" . ($roundorder[2*$numrooms] + $teamoffset) . "'></span>&nbsp;";
 			for($j = 2*$numrooms + 1; $j < sizeof($roundorder); $j++)
-				$tablebody[$round] .= "<br><span class='team" . ($roundorder[$j] + $teamoffset) . "'></span>&nbsp;";
+				$tablebody[$round] .= "<br><span class='$tphase" . ($roundorder[$j] + $teamoffset) . "'></span>&nbsp;";
 			$tablebody[$round] .= "</td>";
 		}
 		$tablebody[$round] .= "</tr>";

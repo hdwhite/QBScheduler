@@ -10,7 +10,7 @@ $bracketparams['numteams'] = 11;
 		<div class="phaseheader">
 			<h2>Schedule</h2>
 		</div>
-		<div class="schedule center">
+		<div class="schedule center narrow">
 			<?php echo(createBracket($bracketparams)); ?>
 		</div>
 	</div>
