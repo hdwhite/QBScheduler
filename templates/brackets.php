@@ -133,6 +133,11 @@ function createBracket($params)
 				break;
 			}
 			break;
+		case 3:
+			$teamorder = array(array(2, 4, 0, 5, 1, 3),
+						       array(1, 5, 2, 3, 0, 4),
+							   array(0, 3, 1, 4, 2, 5));
+			break;
 		}
 		break;
 	case 7:
@@ -175,6 +180,113 @@ function createBracket($params)
 			$teamorder = array(array(0, 3, 1, 2, 5, 6, 4),
 							   array(1, 3, 0, 2, 4, 6, 5),
 							   array(0, 1, 2, 3, 4, 5, 6));
+		break;
+	case 8:
+		$numrooms = 4;
+		$hasbye = 0;
+		switch($crossovers)
+		{
+		case 0:
+			$teamorder = array(array(0, 1, 2, 3, 4, 5, 6, 7),
+							   array(4, 6, 5, 7, 0, 2, 1, 3),
+							   array(0, 3, 1, 2, 4, 7, 5, 6),
+							   array(1, 5, 0, 4, 2, 6, 3, 7),
+							   array(2, 7, 1, 6, 3, 4, 0, 5),
+							   array(3, 5, 0, 6, 1, 7, 2, 4),
+							   array(1, 4, 2, 5, 3, 6, 0, 7));
+			break;
+		}
+		if($inplaceplayoffs == 1)
+			$teamorder = array(array(0, 3, 1, 2, 4, 7, 5, 6),
+							   array(1, 3, 0, 2, 5, 7, 4, 6),
+							   array(0, 1, 2, 3, 4, 5, 6, 7));
+		break;
+	case 9:
+		$numrooms = 4;
+		$hasbye = 1;
+		switch($crossovers)
+		{
+		case 0:
+			$teamorder = array(array(4, 5, 3, 6, 2, 7, 1, 8, 0),
+							   array(5, 6, 4, 7, 3, 8, 0, 2, 1),
+							   array(6, 7, 5, 8, 0, 4, 1, 3, 2),
+							   array(7, 8, 0, 6, 1, 5, 2, 4, 3),
+							   array(0, 8, 1, 7, 2, 6, 3, 5, 4),
+							   array(0, 1, 2, 8, 3, 7, 4, 6, 5),
+							   array(1, 2, 0, 3, 4, 8, 5, 7, 6),
+							   array(2, 3, 1, 4, 0, 5, 6, 8, 7),
+							   array(3, 4, 2, 5, 1, 6, 0, 7, 8));
+		   break;
+		}
+		switch($inplaceplayoffs)
+		{
+		case 1:
+			$numrooms = 3;
+			$teamorder = array(array(1, 2, 4, 5, 7, 8, 0, 3, 6),
+			                   array(0, 2, 3, 5, 6, 8, 1, 4, 7),
+							   array(0, 1, 3, 4, 6, 7, 2, 5, 8));
+			break;
+		case 2:
+			$numrooms = 4;
+			$teamorder = array(array(1, 2, 0, 3, 5, 8, 6, 7, 4),
+							   array(2, 3, 1, 4, 6, 8, 5, 7, 0),
+							   array(3, 4, 0, 2, 5, 6, 7, 8, 1),
+							   array(0, 4, 1, 3, 99, 99, 99, 99, 2),
+							   array(0, 1, 2, 4, 99, 99, 99, 99, 3));
+			break;
+		}
+		break;
+	case 10:
+		$numrooms = 5;
+		$hasbye = 0;
+		switch($crossovers)
+		{
+		case 0:
+		$teamorder = array(array(4, 8, 7, 9, 1, 6, 2, 5, 0, 3),
+						   array(5, 9, 6, 8, 0, 7, 3, 4, 1, 2),
+						   array(2, 7, 1, 4, 3, 8, 0, 9, 5, 6),
+						   array(3, 6, 0, 5, 2, 9, 1, 8, 4, 7),
+						   array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9),
+						   array(5, 7, 4, 9, 1, 3, 0, 8, 2, 6),
+						   array(4, 6, 5, 8, 0, 2, 1, 9, 3, 7),
+						   array(3, 9, 0, 6, 7, 8, 2, 4, 1, 5),
+						   array(2, 8, 1, 7, 6, 9, 3, 5, 0, 4));
+			break;
+		}
+		if($inplaceplayoffs == 1)
+		$teamorder = array(array(0, 3, 1, 2, 5, 6, 8, 9, 4, 7),
+						   array(1, 3, 0, 2, 4, 6, 7, 9, 5, 8),
+						   array(0, 1, 2, 3, 4, 5, 7, 8, 6, 9));
+		break;
+	case 11:
+		$numrooms = 5;
+		$hasbye = 1;
+		$teamorder = array(array(5, 6, 4, 7, 3, 8, 2, 9, 1, 10, 0),
+						   array(6, 7, 5, 8, 4, 9, 3, 10, 0, 2, 1),
+						   array(7, 8, 6, 9, 5, 10, 0, 4, 1, 3, 2),
+						   array(8, 9, 7, 10, 0, 6, 1, 5, 2, 4, 3),
+						   array(9, 10, 0, 8, 1, 7, 2, 6, 3, 5, 4),
+						   array(0, 10, 1, 9, 2, 8, 3, 7, 4, 6, 5),
+						   array(0, 1, 2, 10, 3, 9, 4, 8, 5, 7, 6),
+						   array(1, 2, 0, 3, 4, 10, 5, 9, 6, 8, 7),
+						   array(2, 3, 1, 4, 0, 5, 6, 10, 7, 9, 8),
+						   array(3, 4, 2, 5, 1, 6, 0, 7, 8, 10, 9),
+						   array(4, 5, 3, 6, 2, 7, 1, 8, 0, 9, 10));
+		break;
+	case 12:
+		$numrooms = 6;
+		$hasbye = 0;
+		$teamorder = array(array(4, 8, 5, 7, 0, 6, 3, 9, 2, 10, 1, 11),
+						   array(3, 8, 1, 10, 2, 9, 0, 11, 4, 7, 5, 6),
+						   array(1, 9, 4, 6, 3, 7, 2, 8, 0, 5, 10, 11),
+						   array(4, 5, 9, 11, 1, 8, 2, 7, 3, 6, 0, 10),
+						   array(9, 10, 3, 5, 2, 6, 1, 7, 8, 11, 0, 4),
+						   array(2, 5, 8, 10, 7, 11, 1, 6, 0, 9, 3, 4),
+						   array(6, 11, 2, 4, 1, 5, 0, 3, 7, 10, 8, 9),
+						   array(6, 10, 7, 9, 0, 8, 5, 11, 1, 4, 2, 3),
+						   array(1, 3, 0, 2, 4, 11, 5, 10, 6, 9, 7, 8),
+						   array(0, 7, 6, 8, 5, 9, 4, 10, 3, 11, 1, 2),
+						   array(2, 11, 0, 1, 3, 10, 4, 9, 5, 8, 6, 7));
 		break;
 	}
 	

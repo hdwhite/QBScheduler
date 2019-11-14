@@ -1,3 +1,7 @@
+<?php
+$bracketparams = array();
+$bracketparams['numteams'] = 8;
+?>
 <div class="scontainer">
 	<div class="name">
 		<h2 class="tourneyname">&nbsp;</h2>
@@ -7,30 +11,7 @@
 			<h2>Schedule</h2>
 		</div>
 		<div class="schedule center">
-			<table>
-				<thead>
-					<tr><th>Round</th><th class="room0"></th><th class="room1"></th><th class="room2"></th><th class="room3"></th></tr>
-				</thead>
-				<tbody>
-				<?php
-					$teamorder = array(array(0, 1, 2, 3, 4, 5, 6, 7),
-									   array(4, 6, 5, 7, 0, 2, 1, 3),
-									   array(0, 3, 1, 2, 4, 7, 5, 6),
-									   array(1, 5, 0, 4, 2, 6, 3, 7),
-									   array(2, 7, 1, 6, 3, 4, 0, 5),
-									   array(3, 5, 0, 6, 1, 7, 2, 4),
-									   array(1, 4, 2, 5, 3, 6, 0, 7));
-					foreach($teamorder as $round => $roundorder)
-					{
-						echo("<tr><th>" . ($round + 1) . "</th>");
-						for($j = 0; $j < sizeof($roundorder) - 1; $j += 2)
-							echo("<td><span class='team" . $roundorder[$j] . "'></span>&nbsp;<br><span class='team" . $roundorder[$j+1] . "'></span>&nbsp;</td>");
-						// echo("<td><span class='team" . end($roundorder) . "'></span>&nbsp;</td>");
-						echo("</tr>\n");
-					}
-				?>
-				</tbody>
-			</table>
+			<?php echo(createBracket($bracketparams)); ?>
 		</div>
 	</div>
 	<div class="instruction">
@@ -53,25 +34,11 @@
 			<h2>Playoff Rounds</h2>
 		</div>
 		<div class="schedule center">
-			<table>
-				<thead>
-					<tr><th>Round</th><th class="room0"></th><th class="room1"></th><th class="room2"></th><th class="room3"></th></tr>
-				</thead>
-				<tbody>
-				<?php
-					$teamorder = array(array(0, 3, 1, 2, 4, 7, 5, 6),
-									   array(1, 3, 0, 2, 5, 7, 4, 6),
-									   array(0, 1, 2, 3, 4, 5, 6, 7));
-					foreach($teamorder as $round => $roundorder)
-					{
-						echo("<tr><th>" . ($round + 8) . "</th>");
-						for($j = 0; $j < sizeof($roundorder) - 1; $j += 2)
-							echo("<td><span class='playoffteam" . $roundorder[$j] . "'></span>&nbsp;<br><span class='playoffteam" . $roundorder[$j+1] . "'></span>&nbsp;</td>");
-						// echo("<td><span class='playoffteam" . end($roundorder) . "'></span>&nbsp;</td></tr>\n");
-					}
-				?>
-				</tbody>
-			</table>
+			<?php 
+			$bracketparams['firstround'] = 8;
+			$bracketparams['inplaceplayoffs'] = 1;
+			echo(createBracket($bracketparams));
+			?>
 		</div>
 	</div>
 </div>

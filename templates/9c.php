@@ -55,27 +55,11 @@
 			<h2>Playoff Rounds</h2>
 		</div>
 		<div class="schedule center">
-			<table>
-				<thead>
-					<tr><th>Round</th><th class="room0"></th><th class="room1"></th><th class="room2"></th><th class="room3"></th><th>Bye</th></tr>
-				</thead>
-				<tbody>
-				<?php
-					$teamorder = array(array(1, 2, 0, 3, 5, 8, 6, 7, 4),
-					                   array(2, 3, 1, 4, 6, 8, 5, 7, 0),
-									   array(3, 4, 0, 2, 5, 6, 7, 8, 1),
-									   array(0, 4, 1, 3, 99, 99, 99, 99, 2),
-									   array(0, 1, 2, 4, 99, 99, 99, 99, 3));
-					foreach($teamorder as $round => $roundorder)
-					{
-						echo("<tr><th>" . ($round + 10) . "</th>");
-						for($j = 0; $j < sizeof($roundorder) - 1; $j += 2)
-							echo("<td><span class='playoffteam" . $roundorder[$j] . "'></span>&nbsp;<br><span class='playoffteam" . $roundorder[$j+1] . "'></span>&nbsp;</td>");
-						echo("<td><span class='playoffteam" . end($roundorder) . "'></span>&nbsp;</td></tr>\n");
-					}
-				?>
-				</tbody>
-			</table>
+			<?php 
+			$bracketparams['firstround'] = 10;
+			$bracketparams['inplaceplayoffs'] = 2;
+			echo(createBracket($bracketparams));
+			?>
 		</div>
 	</div>
 </div>
