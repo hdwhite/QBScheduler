@@ -101,6 +101,11 @@ function createBracket($params)
 				break;
 			}
 			break;
+		case 3:
+				$teamorder = array(array(2, 4, 1, 3, 0),
+								   array(0, 4, 2, 3, 1),
+								   array(0, 3, 1, 4, 2));
+			break;
 		}
 		if($inplaceplayoffs == 1)
 			$teamorder = array(array(1, 2, 3, 4, 0),
@@ -135,6 +140,12 @@ function createBracket($params)
 								   array(1, 2, 0, 5, 3, 4));
 				break;
 			}
+			break;
+		case 2:
+			$teamorder = array(array(0, 5, 3, 4, 1, 2),
+							   array(2, 4, 0, 3, 1, 5),
+							   array(1, 3, 2, 5, 0, 4),
+							   array(0, 2, 1, 4, 3, 5));
 			break;
 		case 3:
 			$teamorder = array(array(2, 4, 0, 5, 1, 3),
@@ -210,6 +221,20 @@ function createBracket($params)
 							   array(0, 4, 1, 5, 2, 6, 3, 7));
 			break;
 		}
+		switch($byestyle)
+		{
+		case 1:
+			$hasbye = 1;
+			$teamorder = array(array(6, 7, 2, 3, 4, 5, 99, 99, 0, 1),
+							   array(4, 6, 1, 3, 0, 2, 99, 99, 5, 7),
+							   array(1, 4, 2, 5, 0, 7, 99, 99, 3, 6),
+							   array(1, 7, 0, 6, 3, 5, 99, 99, 2, 4),
+							   array(0, 3, 1, 2, 4, 7, 5, 6, 99, 99),
+							   array(1, 5, 0, 4, 2, 6, 3, 7, 99, 99),
+							   array(2, 7, 1, 6, 3, 4, 0, 5, 99, 99),
+							   array(0, 1, 5, 7, 3, 6, 2, 4, 99, 99));
+			break;
+		}
 		if($inplaceplayoffs == 1)
 			$teamorder = array(array(0, 3, 1, 2, 4, 7, 5, 6),
 							   array(1, 3, 0, 2, 5, 7, 4, 6),
@@ -230,7 +255,13 @@ function createBracket($params)
 							   array(1, 2, 0, 3, 4, 8, 5, 7, 6),
 							   array(2, 3, 1, 4, 0, 5, 6, 8, 7),
 							   array(3, 4, 2, 5, 1, 6, 0, 7, 8));
-		   break;
+			break;
+		case 5:
+			$teamorder = array(array(3, 7, 4, 8, 1, 5, 2, 6, 0),
+							   array(0, 8, 2, 5, 3, 6, 4, 7, 1),
+							   array(4, 6, 0, 7, 1, 8, 3, 5, 2),
+							   array(2, 8, 4, 5, 0, 6, 1, 7, 3),
+							   array(0, 5, 1, 6, 2, 7, 3, 8, 4));
 		}
 		switch($inplaceplayoffs)
 		{
@@ -256,15 +287,22 @@ function createBracket($params)
 		switch($crossovers)
 		{
 		case 0:
-		$teamorder = array(array(4, 8, 7, 9, 1, 6, 2, 5, 0, 3),
-						   array(5, 9, 6, 8, 0, 7, 3, 4, 1, 2),
-						   array(2, 7, 1, 4, 3, 8, 0, 9, 5, 6),
-						   array(3, 6, 0, 5, 2, 9, 1, 8, 4, 7),
-						   array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9),
-						   array(5, 7, 4, 9, 1, 3, 0, 8, 2, 6),
-						   array(4, 6, 5, 8, 0, 2, 1, 9, 3, 7),
-						   array(3, 9, 0, 6, 7, 8, 2, 4, 1, 5),
-						   array(2, 8, 1, 7, 6, 9, 3, 5, 0, 4));
+			$teamorder = array(array(4, 8, 7, 9, 1, 6, 2, 5, 0, 3),
+							   array(5, 9, 6, 8, 0, 7, 3, 4, 1, 2),
+							   array(2, 7, 1, 4, 3, 8, 0, 9, 5, 6),
+							   array(3, 6, 0, 5, 2, 9, 1, 8, 4, 7),
+							   array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9),
+							   array(5, 7, 4, 9, 1, 3, 0, 8, 2, 6),
+							   array(4, 6, 5, 8, 0, 2, 1, 9, 3, 7),
+							   array(3, 9, 0, 6, 7, 8, 2, 4, 1, 5),
+							   array(2, 8, 1, 7, 6, 9, 3, 5, 0, 4));
+		break;
+		case 5:
+			$teamorder = array(array(3, 7, 4, 8, 0, 9, 1, 5, 2, 6),
+							   array(1, 9, 2, 5, 3, 6, 4, 7, 0, 8),
+							   array(4, 6, 0, 7, 1, 8, 2, 9, 3, 5),
+							   array(2, 8, 3, 9, 4, 5, 0, 6, 1, 7),
+							   array(0, 5, 1, 6, 2, 7, 3, 8, 4, 9));
 			break;
 		}
 		if($inplaceplayoffs == 1)
