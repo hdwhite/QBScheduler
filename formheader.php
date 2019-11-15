@@ -33,6 +33,7 @@ while($sdetail = $schedulequery->fetch_assoc())
 						$finalstype[$surl] = $sdetails['finalstype'];
 					}
 			?>
+			var timeout = null;
 			var prelimBrackets = <?=json_encode($prelimBrackets) ?>;
 			var playoffBrackets = <?=json_encode($playoffBrackets) ?>;
 			var numRounds = <?=json_encode($rounds) ?>;
@@ -214,7 +215,8 @@ while($sdetail = $schedulequery->fetch_assoc())
 				$('#rooms').on('input', function()
 				{
 					roomList = $('#rooms').val().split('\n');
-					updateRooms();
+					clearTimeout(timeout)
+					timeout = setTimeout(function() { updateRooms(); }, 500);
 				});
 
 				function updateRooms()
@@ -225,7 +227,8 @@ while($sdetail = $schedulequery->fetch_assoc())
 
 				$('.teaminput').on('input', function()
 				{
-					updateTeams();
+					clearTimeout(timeout)
+					timeout = setTimeout(function() { updateTeams(); }, 500);
 				});
 
 				function updateTeams()
@@ -270,7 +273,8 @@ while($sdetail = $schedulequery->fetch_assoc())
 
 				$('#playoffBrackets').on('input', function()
 				{
-					updatePlayoffBrackets();
+					clearTimeout(timeout)
+					timeout = setTimeout(function() { updatePlayoffBrackets(); }, 500);
 				});
 
 				function updatePlayoffBrackets()
