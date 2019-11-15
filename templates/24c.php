@@ -45,6 +45,7 @@ $bracketparams['numteams'] = 6;
 		<?php
 		$bracketparams['numteams'] = 8;
 		$bracketparams['firstround'] = 6;
+		$bracketparams['crossovers'] = 2;
 		for($k = 0; $k < 3; $k++) { ?>
 		<h3 class="playoffbracket<?=$k ?>">&nbsp;</h3>
 		<div class="phaserow">

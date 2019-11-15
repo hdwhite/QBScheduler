@@ -91,6 +91,7 @@ $bracketparams['numteams'] = 7;
 				$bracketparams['roomoffset'] = 7;
 				echo(createBracket($bracketparams));
 				?>
+			</div>
 		</div>
 	</div>
 </div>

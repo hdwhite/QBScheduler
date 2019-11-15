@@ -239,7 +239,16 @@ function createBracket($params)
 							   array(3, 5, 0, 6, 1, 7, 2, 4),
 							   array(1, 4, 2, 5, 3, 6, 0, 7));
 			break;
+		case 2:
+			$teamorder = array(array(1, 6, 2, 7, 3, 4, 0, 5),
+							   array(0, 3, 4, 7, 1, 2, 5, 6),
+							   array(1, 4, 2, 5, 3, 6, 0, 7),
+							   array(0, 4, 1, 5, 2, 6, 3, 7),
+							   array(3, 5, 0, 6, 1, 7, 2, 4),
+							   array(4, 6, 5, 7, 0, 2, 1, 3));
+			break;
 		case 3:
+			$hasbye = 1;
 			$teamorder = array(array(1, 5, 0, 4, 2, 6, 3, 7, 99, 99),
 							   array(2, 7, 3, 6, 1, 4, 0, 5, 99, 99),
 							   array(0, 3, 4, 7, 2, 5, 1, 6, 99, 99),
@@ -318,7 +327,7 @@ function createBracket($params)
 							   array(2, 8, 1, 5, 0, 4, 3, 7, 6),
 							   array(1, 7, 3, 8, 2, 4, 0, 6, 5),
 							   array(0, 3, 1, 6, 5, 7, 4, 8, 2),
-							   array(3, 6, 0, 7, 2, 5, 99, 99, 1));
+							   array(3, 6, 0, 7, 2, 5, 99, 99, 1, 4, 8));
 			break;
 		case 5:
 			$teamorder = array(array(3, 7, 4, 8, 1, 5, 2, 6, 0),

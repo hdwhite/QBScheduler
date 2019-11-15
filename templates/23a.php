@@ -54,7 +54,7 @@ $bracketparams['numteams'] = 12;
 				$bracketparams['numteams'] = 4;
 				$bracketparams['teamoffset'] = 0;
 				$bracketparams['roomoffset'] = 0;
-				$bracketparams['firstround'] = 10;
+				$bracketparams['firstround'] = 12;
 				$bracketparams['crossovers'] = 2;
 				echo(createBracket($bracketparams));
 				?>
@@ -99,11 +99,6 @@ $bracketparams['numteams'] = 12;
 			</div>
 			<div class="schedule center">
 				<h3 class="playoffbracket5">&nbsp;</h3>
-				<table>
-					<thead>
-						<tr><th>Round</th><th class="room10"></th></tr>
-					</thead>
-					<tbody>
 				<?php 
 				$bracketparams['numteams'] = 3;
 				$bracketparams['teamoffset'] = 20;
