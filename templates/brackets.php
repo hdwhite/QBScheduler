@@ -117,6 +117,12 @@ function createBracket($params)
 				break;
 			}
 			break;
+		case 2:
+			$teamorder = array(array(3, 4, 1, 2, 0),
+							   array(2, 4, 0, 3, 1),
+							   array(1, 3, 0, 4, 2),
+							   array(0, 2, 1, 4, 3));
+			break;
 		case 3:
 				$teamorder = array(array(2, 4, 1, 3, 0),
 								   array(0, 4, 2, 3, 1),

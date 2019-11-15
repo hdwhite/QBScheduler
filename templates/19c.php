@@ -1,6 +1,6 @@
 <?php
 $bracketparams = array();
-$bracketparams['numteams'] = 7;
+$bracketparams['numteams'] = 10;
 ?>
 <div class="scontainer">
 	<div class="name">
@@ -20,25 +20,16 @@ $bracketparams['numteams'] = 7;
 		<div class="phaserow">
 			<div class="schedule center">
 				<?php 
-				$bracketparams['teamoffset'] = 7;
-				$bracketparams['roomoffset'] = 3;
-				echo(createBracket($bracketparams));
-				?>
-			</div>
-		</div>
-		<h3 class="prelimbracket2">&nbsp;</h3>
-		<div class="phaserow">
-			<div class="schedule center">
-				<?php 
-				$bracketparams['teamoffset'] = 14;
-				$bracketparams['roomoffset'] = 6;
+				$bracketparams['numteams'] = 9;
+				$bracketparams['teamoffset'] = 10;
+				$bracketparams['roomoffset'] = 5;
 				echo(createBracket($bracketparams));
 				?>
 			</div>
 		</div>
 	</div>
 	<div class="instruction">
-		<p>Teams will be initially seeded into three brackets of 7, in which they will play a six-game round-robin. Afterwards, the teams will be placed into playoff brackets of 6, 5, 5, and 5 teams, respectively, based on their performance in the preliminary rounds. Teams in the top bracket will play the four teams in their bracket that they have yet to play, while the teams in the other three brackets will play a full round-robin. Only games played against teams in the same playoff bracket will count towards final standing within each bracket. Finals in the top bracket will be played according to the following criteria:</p>
+		<p>Teams will be initially seeded into brackets of 10 and 9, in which they will play a nine-game round-robin. Afterwards, the teams will be placed into four playoff brackets of 4 and one of 3 based on their performance in the preliminary rounds. Each team will once again play a round-robin within their new bracket, with the excepion of the team they played in the prelims. Only games played against teams in the same playoff bracket will count towards final standing within each bracket. Finals in the top bracket will be played according to the following criteria:</p>
 		<ul>
 			<div class="finals2 finals3" style="display:none"><li>If the first-place team has two or more wins than every other team, then that team wins the tournament outright without the need for a final.</li></div>
 			<div class="finals1" style="display:none"><li>If there is a single team with the best record, then that team wins the tournament outright without the need for a final.</li></div>
@@ -56,39 +47,42 @@ $bracketparams['numteams'] = 7;
 		<div class="phaseheader">
 			<h2>Playoff Rounds</h2>
 		</div>
-		<h3 class="playoffbracket0">&nbsp;</h3>
 		<div class="phaserow">
-			<div class="schedule center">
+			<div class="schedule left">
+				<h3 class="playoffbracket0">&nbsp;</h3>
 				<?php 
-				$bracketparams['numteams'] = 6;
+				$bracketparams['numteams'] = 4;
 				$bracketparams['teamoffset'] = 0;
 				$bracketparams['roomoffset'] = 0;
-				$bracketparams['firstround'] = 8;
+				$bracketparams['firstround'] = 10;
 				$bracketparams['crossovers'] = 2;
 				echo(createBracket($bracketparams));
 				?>
 			</div>
-		</div>
-		<h3>&nbsp;</h3>
-		<div class="phaserow">
-			<div class="schedule center">
+			<div class="schedule left">
 				<h3 class="playoffbracket1">&nbsp;</h3>
 				<?php 
-				$bracketparams['numteams'] = 5;
-				$bracketparams['teamoffset'] = 6;
-				$bracketparams['roomoffset'] = 3;
-				$bracketparams['crossovers'] = 0;
+				$bracketparams['teamoffset'] = 4;
+				$bracketparams['roomoffset'] = 2;
 				echo(createBracket($bracketparams));
 				?>
 			</div>
 		</div>
 		<h3>&nbsp;</h3>
 		<div class="phaserow">
-			<div class="schedule center">
+			<div class="schedule left">
 				<h3 class="playoffbracket2">&nbsp;</h3>
 				<?php 
-				$bracketparams['teamoffset'] = 11;
-				$bracketparams['roomoffset'] = 5;
+				$bracketparams['teamoffset'] = 8;
+				$bracketparams['roomoffset'] = 4;
+				echo(createBracket($bracketparams));
+				?>
+			</div>
+			<div class="schedule left">
+				<h3 class="playoffbracket3">&nbsp;</h3>
+				<?php 
+				$bracketparams['teamoffset'] = 12;
+				$bracketparams['roomoffset'] = 6;
 				echo(createBracket($bracketparams));
 				?>
 			</div>
@@ -96,10 +90,11 @@ $bracketparams['numteams'] = 7;
 		<h3>&nbsp;</h3>
 		<div class="phaserow">
 			<div class="schedule center">
-				<h3 class="playoffbracket3">&nbsp;</h3>
+				<h3 class="playoffbracket4">&nbsp;</h3>
 				<?php 
+				$bracketparams['numteams'] = 3;
 				$bracketparams['teamoffset'] = 16;
-				$bracketparams['roomoffset'] = 7;
+				$bracketparams['roomoffset'] = 8;
 				echo(createBracket($bracketparams));
 				?>
 			</div>
