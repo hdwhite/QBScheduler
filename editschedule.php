@@ -7,9 +7,17 @@ require_once("dbnames.inc");
 require_once($_dbconfig);
 $scheduleinfo = $mysqli->query("SELECT * FROM $_scheduledb WHERE id=$tournamentid")->fetch_assoc();
 if(is_null($scheduleinfo))
+{
+	header("HTTP/1.0 404 Not Found");
+	require("../../errors/404.php");
 	exit();
+}
 if($scheduleinfo['editcode'] !== $editcode)
+{
+	header("HTTP/1.0 403 Forbidden");
+	require("../../errors/403.php");
 	exit();
+}
 
 $formatinfo = $mysqli->query("SELECT * FROM $_templatedb WHERE id=" . $scheduleinfo['format'])->fetch_assoc();
 $formatteams = $formatinfo['teams'];

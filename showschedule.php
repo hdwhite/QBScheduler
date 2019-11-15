@@ -6,7 +6,11 @@ require_once($_dbconfig);
 require_once("templates/brackets.php");
 $scheduleinfo = $mysqli->query("SELECT * FROM $_scheduledb WHERE id=$tournamentid")->fetch_assoc();
 if(is_null($scheduleinfo))
+{
+	header("HTTP/1.0 404 Not Found");
+	require("../../errors/404.php");
 	exit();
+}
 $bracketdata = $mysqli->query("SELECT * FROM $_bracketdb WHERE tournament=$tournamentid");
 $roomdata = $mysqli->query("SELECT * FROM $_roomdb WHERE tournament=$tournamentid");
 $teamdata = $mysqli->query("SELECT * FROM $_teamdb WHERE tournament=$tournamentid AND phase=0");
