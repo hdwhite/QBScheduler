@@ -1,3 +1,7 @@
+<?php
+$bracketparams = array();
+$bracketparams['numteams'] = 6;
+?>
 <div class="scontainer">
 	<div class="name">
 		<h2 class="tourneyname">&nbsp;</h2>
@@ -10,28 +14,11 @@
 		<h3 class="prelimbracket<?=$k ?>">&nbsp;</h3>
 		<div class="phaserow">
 			<div class="schedule center">
-				<table>
-					<thead>
-						<tr><th>Round</th><th class="room<?=(3*$k) ?>"></th><th class="room<?=(3*$k+1) ?>"></th><th class="room<?=(3*$k+2) ?>"></tr>
-					</thead>
-					<tbody>
-					<?php
-						$teamorder = array(array(0, 1, 2, 3, 4, 5),
-										   array(3, 5, 1, 4, 0, 2),
-										   array(2, 4, 0, 3, 1, 5),
-										   array(1, 3, 2, 5, 0, 4),
-										   array(0, 5, 3, 4, 1, 2));
-						foreach($teamorder as $round => $roundorder)
-						{
-							echo("<tr><th>" . ($round + 1) . "</th>");
-							for($j = 0; $j < sizeof($roundorder) - 1; $j += 2)
-								echo("<td><span class='team" . ($roundorder[$j] + 6*$k) . "'></span>&nbsp;<br><span class='team" . ($roundorder[$j+1] + 6*$k) . "'></span>&nbsp;</td>");
-							// echo("<td><span class='team" . end($roundorder) . "'></span>&nbsp;</td>");
-							echo("</tr>\n");
-						}
-					?>
-					</tbody>
-				</table>
+				<?php 
+				$bracketparams['teamoffset'] = 6*$k;
+				$bracketparams['roomoffset'] = 3*$k;
+				echo(createBracket($bracketparams));
+				?>
 			</div>
 		</div>
 		<?php } ?>
@@ -51,48 +38,25 @@
 			<h2>Playoff Rounds</h2>
 		</div>
 		<?php
-		$teamorder = array(array(0, 3, 1, 2),
-						   array(1, 3, 0, 2),
-						   array(0, 1, 2, 3));
+		$bracketparams['numteams'] = 4;
+		$bracketparams['firstround'] = 6;
 		for($k = 0; $k < 3; $k++) { ?>
 		<div class="phaserow">
 			<div class="schedule left">
 				<h3 class="playoffbracket<?=(2*$k) ?>">&nbsp;</h3>
-				<table>
-					<thead>
-						<tr><th>Round</th><th class="room<?=(4*$k) ?>"></th><th class="room<?=(4*$k+1) ?>"></th></tr>
-					</thead>
-					<tbody>
-					<?php
-						foreach($teamorder as $round => $roundorder)
-						{
-							echo("<tr><th>" . ($round + 6) . "</th>");
-							for($j = 0; $j < sizeof($roundorder) - 1; $j += 2)
-								echo("<td><span class='playoffteam" . ($roundorder[$j] + 8*$k) . "'></span>&nbsp;<br><span class='playoffteam" . ($roundorder[$j+1] + 8*$k) . "'></span>&nbsp;</td>");
-							// echo("<td><span class='playoffteam" . end($roundorder) . "'></span>&nbsp;</td></tr>\n");
-						}
-					?>
-					</tbody>
-				</table>
+				<?php 
+				$bracketparams['teamoffset'] = 8*$k;
+				$bracketparams['roomoffset'] = 4*$k;
+				echo(createBracket($bracketparams));
+				?>
 			</div>
 			<div class="schedule left">
 				<h3 class="playoffbracket<?=(2*$k+1) ?>">&nbsp;</h3>
-				<table>
-					<thead>
-						<tr><th>Round</th><th class="room<?=(4*$k+2) ?>"></th><th class="room<?=(4*$k+3) ?>"></th></tr>
-					</thead>
-					<tbody>
-					<?php
-						foreach($teamorder as $round => $roundorder)
-						{
-							echo("<tr><th>" . ($round + 6) . "</th>");
-							for($j = 0; $j < sizeof($roundorder) - 1; $j += 2)
-								echo("<td><span class='playoffteam" . ($roundorder[$j] + 8*$k + 4) . "'></span>&nbsp;<br><span class='playoffteam" . ($roundorder[$j+1] + 8*$k + 4) . "'></span>&nbsp;</td>");
-							// echo("<td><span class='playoffteam" . end($roundorder) . "'></span>&nbsp;</td></tr>\n");
-						}
-					?>
-					</tbody>
-				</table>
+				<?php 
+				$bracketparams['teamoffset'] = 8*$k+4;
+				$bracketparams['roomoffset'] = 4*$k+2;
+				echo(createBracket($bracketparams));
+				?>
 			</div>
 		</div>
 		<h3>&nbsp;</h3>

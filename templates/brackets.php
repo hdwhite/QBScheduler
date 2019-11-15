@@ -19,6 +19,22 @@ function createBracket($params)
 	$tableheader = "<thead><tr><th>Round</th>";
 	switch($numteams)
 	{
+	case 2:
+		$numrooms = 1;
+		$hasbye = 0;
+		$teamorder = array_fill(0, $iterations, array(0, 1));
+		break;
+	case 3:
+		$numrooms = 1;
+		$hasbye = 1;
+		if($crossovers == 0)
+			$teamorder = array(array(1, 2, 0),
+			                   array(0, 2, 1),
+							   array(0, 1, 2));
+		else
+			$teamorder = array(array(1, 2, 0),
+			                   array(0, 2, 1));
+		break;
 	case 4:
 		$numrooms = 2;
 		$hasbye = 0;
@@ -189,11 +205,20 @@ function createBracket($params)
 				break;
 			}
 			break;
+		case 3:
+			$teamorder = array(array(2, 5, 0, 6, 1, 3, 4),
+							   array(3, 6, 1, 4, 0, 2, 5),
+							   array(2, 4, 0, 3, 1, 5, 6),
+							   array(0, 5, 1, 6, 3, 4, 2),
+							   array(3, 5, 2, 6, 99, 99, 0, 1, 4),
+							   array(1, 2, 0, 4, 99, 99, 3, 5, 6));
+			break;
 		case 4:
 			$teamorder = array(array(3, 6, 2, 5, 1, 4, 0),
 							   array(2, 4, 0, 6, 3, 5, 1),
 							   array(1, 6, 3, 4, 0, 5, 2),
 							   array(0, 4, 1, 5, 2, 6, 3));
+			break;
 		}
 		if($inplaceplayoffs == 1)
 			$teamorder = array(array(0, 3, 1, 2, 5, 6, 4),
@@ -214,6 +239,14 @@ function createBracket($params)
 							   array(3, 5, 0, 6, 1, 7, 2, 4),
 							   array(1, 4, 2, 5, 3, 6, 0, 7));
 			break;
+		case 3:
+			$teamorder = array(array(1, 5, 0, 4, 2, 6, 3, 7, 99, 99),
+							   array(2, 7, 3, 6, 1, 4, 0, 5, 99, 99),
+							   array(0, 3, 4, 7, 2, 5, 1, 6, 99, 99),
+							   array(5, 6, 2, 3, 0, 7, 99, 99, 1, 4),
+							   array(1, 3, 5, 7, 4, 6, 99, 99, 0, 2),
+							   array(0, 6, 2, 4, 1, 7, 99, 99, 3, 5));
+			break;
 		case 4:
 			$teamorder = array(array(0, 7, 1, 4, 2, 5, 3, 6),
 							   array(3, 5, 0, 6, 1, 7, 2, 4),
@@ -233,6 +266,28 @@ function createBracket($params)
 							   array(1, 5, 0, 4, 2, 6, 3, 7, 99, 99),
 							   array(2, 7, 1, 6, 3, 4, 0, 5, 99, 99),
 							   array(0, 1, 5, 7, 3, 6, 2, 4, 99, 99));
+			break;
+		case 2:
+			$hasbye = 1;
+			$teamorder = array(array(6, 7, 2, 3, 4, 5, 99, 99, 0, 1),
+							   array(0, 3, 1, 2, 4, 7, 5, 6, 99, 99),
+							   array(4, 6, 1, 3, 0, 2, 99, 99, 5, 7),
+							   array(1, 5, 0, 4, 2, 6, 3, 7, 99, 99),
+							   array(1, 4, 2, 5, 0, 7, 99, 99, 3, 6),
+							   array(2, 7, 1, 6, 3, 4, 0, 5, 99, 99),
+							   array(3, 5, 0, 6, 1, 7, 99, 99, 2, 4),
+							   array(0, 1, 5, 7, 3, 6, 2, 4, 99, 99));
+			break;
+		case 3:
+			$hasbye = 1;
+			$teamorder = array(array(3, 7, 1, 5, 0, 4, 2, 6, 99, 99),
+							   array(99, 99, 4, 6, 1, 3, 0, 2, 5, 7),
+							   array(0, 5, 2, 7, 1, 6, 3, 4, 99, 99),
+							   array(99, 99, 3, 5, 0, 6, 1, 7, 2, 4),
+							   array(2, 4, 0, 1, 5, 7, 3, 6, 99, 99),
+							   array(99, 99, 1, 4, 2, 5, 0, 7, 3, 6),
+							   array(5, 6, 0, 3, 1, 2, 4, 7, 99, 99),
+							   array(99, 99, 6, 7, 2, 3, 4, 5, 0, 1));
 			break;
 		}
 		if($inplaceplayoffs == 1)
@@ -255,6 +310,15 @@ function createBracket($params)
 							   array(1, 2, 0, 3, 4, 8, 5, 7, 6),
 							   array(2, 3, 1, 4, 0, 5, 6, 8, 7),
 							   array(3, 4, 2, 5, 1, 6, 0, 7, 8));
+			break;
+		case 3:
+			$teamorder = array(array(0, 5, 4, 6, 2, 7, 1, 8, 3),
+							   array(1, 4, 0, 8, 5, 6, 2, 3, 7),
+							   array(2, 6, 4, 7, 1, 3, 5, 8, 0),
+							   array(2, 8, 1, 5, 0, 4, 3, 7, 6),
+							   array(1, 7, 3, 8, 2, 4, 0, 6, 5),
+							   array(0, 3, 1, 6, 5, 7, 4, 8, 2),
+							   array(3, 6, 0, 7, 2, 5, 99, 99, 1));
 			break;
 		case 5:
 			$teamorder = array(array(3, 7, 4, 8, 1, 5, 2, 6, 0),
