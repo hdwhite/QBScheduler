@@ -46,13 +46,13 @@
 					<?php for($i = 0; $i < 4; $i++) echo("<td><input type='text' name='prelimBracket$i' id='prelimBracket$i' class='teaminput' placeholder='Bracket name' style='width:185px; display:none;'></td>"); ?>
 				</tr>
 				<tr>
-					<?php for($i = 0; $i < 4; $i++) echo("<td style='vertical-align:top;'><textarea type='text' name='teams$i' id='teams$i' class='teaminput' placeholder='Team names (one per line)' rows='8' style='width:185px; display:none; overflow:hidden;'></textarea></td>"); ?>
+					<?php for($i = 0; $i < 4; $i++) echo("<td style='vertical-align:top;'><textarea name='teams$i' id='teams$i' class='teaminput' placeholder='Team names (one per line)' rows='8' style='width:185px; display:none; overflow:hidden;'></textarea></td>"); ?>
 				</tr>
 				<tr>
 					<?php for($i = 4; $i < 8; $i++) echo("<td><input type='text' name='prelimBracket$i' id='prelimBracket$i' class='teaminput' placeholder='Bracket name' style='width:185px; display:none;'></td>"); ?>
 				</tr>
 				<tr>
-					<?php for($i = 4; $i < 8; $i++) echo("<td style='vertical-align:top;'><textarea type='text' name='teams$i' id='teams$i' class='teaminput' placeholder='Team names (one per line)' rows='8' style='width:185px; display:none; overflow:hidden;'></textarea></td>"); ?>
+					<?php for($i = 4; $i < 8; $i++) echo("<td style='vertical-align:top;'><textarea name='teams$i' id='teams$i' class='teaminput' placeholder='Team names (one per line)' rows='8' style='width:185px; display:none; overflow:hidden;'></textarea></td>"); ?>
 				</tr>
 			</table>
 			<div class="playoffBrackets" style="display:none;">
@@ -63,13 +63,13 @@
 						<?php for($i = 0; $i < 4; $i++) echo("<td><input type='text' name='playoffBracket$i' id='playoffBracket$i' class='teaminput' placeholder='Bracket name' style='width:185px; display:none;'></td>"); ?>
 					</tr>
 					<tr>
-						<?php for($i = 0; $i < 4; $i++) echo("<td style='vertical-align:top;'><textarea type='text' name='playoffteams$i' id='playoffteams$i' class='teaminput' placeholder='Team names (one per line)' rows='8' style='width:185px; display:none; overflow:hidden;'></textarea></td>"); ?>
+						<?php for($i = 0; $i < 4; $i++) echo("<td style='vertical-align:top;'><textarea name='playoffteams$i' id='playoffteams$i' class='teaminput' placeholder='Team names (one per line)' rows='8' style='width:185px; display:none; overflow:hidden;'></textarea></td>"); ?>
 					</tr>
 					<tr>
 						<?php for($i = 4; $i < 8; $i++) echo("<td><input type='text' name='playoffBracket$i' id='playoffBracket$i' class='teaminput' placeholder='Bracket name' style='width:185px; display:none;'></td>"); ?>
 					</tr>
 					<tr>
-						<?php for($i = 4; $i < 8; $i++) echo("<td style='vertical-align:top;'><textarea type='text' name='playoffteams$i' id='playoffteams$i' class='teaminput' placeholder='Team names (one per line)' rows='8' style='width:185px; display:none; overflow:hidden;'></textarea></td>"); ?>
+						<?php for($i = 4; $i < 8; $i++) echo("<td style='vertical-align:top;'><textarea name='playoffteams$i' id='playoffteams$i' class='teaminput' placeholder='Team names (one per line)' rows='8' style='width:185px; display:none; overflow:hidden;'></textarea></td>"); ?>
 					</tr>
 				</table>
 				<p>Playoff brackets are sequentially ordered such that the top bracket is on the left. Within each playoff bracket, it is important that all teams from a given prelim bracket are listed next to each other.</p>

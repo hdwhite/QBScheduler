@@ -469,7 +469,7 @@ function createBracket($params)
 	$tphase = ($firstround > 1 ? "playoffteam" : "team");
 	foreach($teamorder as $round => $roundorder)
 	{
-		$tablebody[$round] = "<tr><th>" . ($round + $firstround) . "</th>";
+		$tablebody[$round] = "<tr><th class='round'>" . ($round + $firstround) . "</th>";
 		for($j = 0; $j < $numrooms; $j++)
 			$tablebody[$round] .= "<td><span class='$tphase" . ($roundorder[2*$j] + $teamoffset) . "'></span>&nbsp;<br>" .
 			                          "<span class='$tphase" . ($roundorder[2*$j+1]+$teamoffset) . "'></span>&nbsp;</td>";
