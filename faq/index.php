@@ -1,5 +1,6 @@
 <html>
 	<head>
+		<?php require_once($_SERVER['DOCUMENT_ROOT'] . "/analytics.php"); ?>
 		<STYLE TYPE="text/css">
 			@import url("/harry.css");
 		</STYLE>
