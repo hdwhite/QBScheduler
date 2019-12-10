@@ -37,6 +37,11 @@ $bracketparams['numteams'] = 6;
 			</div>
 		</div>
 	</div>
+	<div class="pagebreak">
+		<div class="name">
+			<h2 class="tourneyname">&nbsp;</h2>
+		</div>
+	</div>
 	<div class="instruction">
 		<p>Teams will be initially seeded into three brackets of six, in which they will play a full round-robin. Afterwards, teams will be placed into playoff brackets based on their performance in the preliminary rounds. Each team will once again play a round-robin within their new bracket, with the exception of the team they played in the prelims. Only games against teams in the same playoff bracket will count towards final standing within each bracket. Finals in the top bracket will be played according to the following criteria:</p>
 		<ul>
@@ -46,11 +51,6 @@ $bracketparams['numteams'] = 6;
 			<li class="finals2" style="display:none">If the first-place team has exactly one more win than the second-place team, then an advantaged final of up to two games will take place, with the second-place team needing to win twice but the first-place team needing to win only once. If there is a tie for second place, then entry into the finals will be broken by points per game.</li>
 			<li class="finals3" style="display:none">If the first-place team has exactly one more win than the second-place team, then an advantaged final of up to two games will take place, with the second-place team needing to win twice but the first-place team needing to win only once. If there is a tie for second place, then those teams will play each other to determine entry into the finals.</li>
 		</ul>
-	</div>
-	<div class="pagebreak">
-		<div class="name">
-			<h2 class="tourneyname">&nbsp;</h2>
-		</div>
 	</div>
 	<div class="phase">
 		<div class="phaseheader">

@@ -27,6 +27,14 @@ $bracketparams['numteams'] = 8;
 				?>
 			</div>
 		</div>
+		<div class="pagebreak">
+			<div class="name">
+				<h2 class="tourneyname">&nbsp;</h2>
+			</div>
+			<div class="phaseheader">
+				<h2>Preliminary Rounds</h2>
+			</div>
+		</div>
 		<h3 class="prelimbracket2">&nbsp;</h3>
 		<div class="phaserow">
 			<div class="schedule center">
@@ -70,10 +78,17 @@ $bracketparams['numteams'] = 8;
 				?>
 			</div>
 		</div>
-		<h3>&nbsp;</h3>
+		<div class="pagebreak">
+			<div class="name">
+				<h2 class="tourneyname">&nbsp;</h2>
+			</div>
+			<div class="phaseheader">
+				<h2>Playoff Rounds</h2>
+			</div>
+		</div>
+		<h3 class="playoffbracket1">&nbsp;</h3>
 		<div class="phaserow">
 			<div class="schedule center">
-				<h3 class="playoffbracket1">&nbsp;</h3>
 				<?php 
 				$bracketparams['numteams'] = 6;
 				$bracketparams['teamoffset'] = 9;
@@ -83,10 +98,9 @@ $bracketparams['numteams'] = 8;
 				?>
 			</div>
 		</div>
-		<h3>&nbsp;</h3>
+		<h3 class="playoffbracket2">&nbsp;</h3>
 		<div class="phaserow">
 			<div class="schedule center">
-				<h3 class="playoffbracket2">&nbsp;</h3>
 				<?php 
 				$bracketparams['numteams'] = 7;
 				$bracketparams['teamoffset'] = 15;

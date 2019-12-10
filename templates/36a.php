@@ -10,7 +10,8 @@ $bracketparams['numteams'] = 6;
 		<div class="phaseheader">
 			<h2>Preliminary Rounds</h2>
 		</div>
-		<?php for($k = 0; $k < 6; $k++) { ?>
+		<?php for($k = 0; $k < 6; $k++) { 
+			if($k == 3) echo("<div class=\"pagebreak\"></div>\n"); ?>
 		<h3 class="prelimbracket<?=$k ?>">&nbsp;</h3>
 		<div class="phaserow">
 			<div class="schedule center">
@@ -40,7 +41,8 @@ $bracketparams['numteams'] = 6;
 		<?php
 		$bracketparams['numteams'] = 6;
 		$bracketparams['firstround'] = 6;
-		for($k = 0; $k < 6; $k++) { ?>
+		for($k = 0; $k < 6; $k++) {
+			if($k == 3) echo("<div class=\"pagebreak\"></div>\n"); ?>
 		<h3 class="playoffbracket<?=$k ?>">&nbsp;</h3>
 		<div class="phaserow">
 			<div class="schedule center">

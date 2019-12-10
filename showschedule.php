@@ -53,8 +53,12 @@ $template = $mysqli->query("SELECT * FROM $_templatedb WHERE id=" . $scheduleinf
 		<style type="text/css">
 			@import url("/harry.css");
 			@import url("/harrybig.css");
-			@import url("/qb/schedules/schedules.css");
-			@import url("/qb/schedules/print.css") print;
+			@import url("/test/QBScheduler/schedules.css");
+			<?php if($template['landscape']) { ?>
+			@import url("/test/QBScheduler/landscape.css") print;
+			<?php } else { ?>
+			@import url("/test/QBScheduler/print.css") print;
+			<?php } ?>
 		</style>
 		<title>Viewing a Schedule</title>
 	</head>

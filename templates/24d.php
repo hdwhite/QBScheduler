@@ -12,7 +12,7 @@ $bracketparams['numteams'] = 8;
 		</div>
 		<h3 class="prelimbracket0">&nbsp;</h3>
 		<div class="phaserow">
-			<div class="schedule center">
+			<div class="schedule center printnarrow">
 				<?php 
 				$bracketparams['byestyle'] = 2;
 				echo(createBracket($bracketparams));
@@ -21,7 +21,7 @@ $bracketparams['numteams'] = 8;
 		</div>
 		<h3 class="prelimbracket1">&nbsp;</h3>
 		<div class="phaserow">
-			<div class="schedule center">
+			<div class="schedule center printnarrow">
 				<?php 
 				$bracketparams['teamoffset'] = 8;
 				$bracketparams['roomoffset'] = 3;
@@ -30,9 +30,17 @@ $bracketparams['numteams'] = 8;
 				?>
 			</div>
 		</div>
+		<div class="pagebreak">
+			<div class="name">
+				<h2 class="tourneyname">&nbsp;</h2>
+			</div>
+			<div class="phaseheader">
+				<h2>Preliminary Rounds</h2>
+			</div>
+		</div>
 		<h3 class="prelimbracket2">&nbsp;</h3>
 		<div class="phaserow">
-			<div class="schedule center">
+			<div class="schedule center printnarrow">
 				<?php 
 				$bracketparams['teamoffset'] = 16;
 				$bracketparams['roomoffset'] = 7;

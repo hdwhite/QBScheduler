@@ -16,6 +16,11 @@ $bracketparams['numteams'] = 10;
 				<?php echo(createBracket($bracketparams)); ?>
 			</div>
 		</div>
+		<div class="pagebreak">
+			<div class="name">
+				<h2 class="tourneyname">&nbsp;</h2>
+			</div>
+		</div>
 		<h3 class="prelimbracket1">&nbsp;</h3>
 		<div class="phaserow">
 			<div class="schedule center">

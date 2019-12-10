@@ -26,6 +26,11 @@ $bracketparams['numteams'] = 7;
 				?>
 			</div>
 		</div>
+		<div class="pagebreak">
+			<div class="name">
+				<h2 class="tourneyname">&nbsp;</h2>
+			</div>
+		</div>
 		<h3 class="prelimbracket2">&nbsp;</h3>
 		<div class="phaserow">
 			<div class="schedule center">

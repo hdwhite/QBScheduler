@@ -10,7 +10,8 @@ $bracketparams['numteams'] = 8;
 		<div class="phaseheader">
 			<h2>Preliminary Rounds</h2>
 		</div>
-		<?php for($k = 0; $k < 3; $k++) { ?>
+		<?php for($k = 0; $k < 3; $k++) {
+			if($k == 2) echo("<div class=\"pagebreak\"></div>\n"); ?>
 		<h3 class="prelimbracket<?=$k ?>">&nbsp;</h3>
 		<div class="phaserow">
 			<div class="schedule center">

@@ -24,11 +24,6 @@ $bracketparams['numteams'] = 7;
 			<li class="finals3" style="display:none">If the first-place team has exactly one more win than the second-place team, then an advantaged final of up to two games will take place, with the second-place team needing to win twice but the first-place team needing to win only once. If there is a tie for second place, then those teams will play each other to determine entry into the finals.</li>
 		</ul>
 	</div>
-	<div class="pagebreak">
-		<div class="name">
-			<h2 class="tourneyname">&nbsp;</h2>
-		</div>
-	</div>
 	<div class="phase">
 		<div class="phaseheader">
 			<h2>Playoff Rounds</h2>

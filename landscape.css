@@ -1,7 +1,7 @@
 .scontainer
 {
-	height: 10in;
-	width: 7in;
+	height: 6.5in;
+	width: 9in;
 /*	background: #0000FF; */
 }
 
@@ -18,7 +18,7 @@ body
 
 #container
 {
-	width: 7in;
+	width: 9in;
 }
 
 #header
@@ -35,7 +35,7 @@ body
 {
 	background: #FFFFFF;
 	border: none;
-	width: 7in;
+	width: 9in;
 }
 
 h2
@@ -58,20 +58,14 @@ th, td
 	min-width: 130px;
 }
 
-.printnarrow td
+.narrower td
 {
-	min-width: 120px;
+	min-width: 110px;
 }
 
 .instruction
 {
-	width: 7in;
-	margin: 0 0 0.33in 0;
-}
-
-.left
-{
-	padding: 0 0 10px 3%;
+	width: 9in;
 }
 
 .pagebreak
