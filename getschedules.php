@@ -12,6 +12,7 @@ $bracketdata = $mysqli->query("SELECT * FROM $_bracketdb WHERE tournament=$tourn
 $roomdata = $mysqli->query("SELECT * FROM $_roomdb WHERE tournament=$tournament");
 $teamdata = $mysqli->query("SELECT * FROM $_teamdb WHERE tournament=$tournament");
 $template = $mysqli->query("SELECT * FROM $_templatedb WHERE id=" . $scheduleinfo['format'])->fetch_assoc();
+$numteams = $template['teams'];
 $numrooms = $template['rooms'];
 
 $prelimbrackets = array();
@@ -31,10 +32,15 @@ while($curroom = $roomdata->fetch_assoc())
 $teamarray = array();
 $playoffteams = array();
 while($curteam = $teamdata->fetch_assoc())
-	if($curteam['phase'] == 0)
-		$teamarray[$curteam['position']] = (object) ["name" => htmlentities($curteam['name']), "prelimbracket" => NULL, "playoffbracket" => NULL, "matches" => array()];
-	else
-		$playoffteams[$curteam['position']] = $curteam['name'];
+{
+	if($curteam['position'] < $numteams)
+	{
+		if($curteam['phase'] == 0)
+			$teamarray[$curteam['position']] = (object) ["name" => htmlentities($curteam['name']), "prelimbracket" => NULL, "playoffbracket" => NULL, "matches" => array()];
+		else
+			$playoffteams[$curteam['position']] = $curteam['name'];
+	}
+}
 
 $phasepairings = array_fill(0, count($teamarray), 99);
 foreach($playoffteams as $playoffid => $curplayoff)
