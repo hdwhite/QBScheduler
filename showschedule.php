@@ -53,11 +53,11 @@ $template = $mysqli->query("SELECT * FROM $_templatedb WHERE id=" . $scheduleinf
 		<style type="text/css">
 			@import url("/harry.css");
 			@import url("/harrybig.css");
-			@import url("/test/QBScheduler/schedules.css");
+			@import url("/qb/schedules/schedules.css");
 			<?php if($template['landscape']) { ?>
-			@import url("/test/QBScheduler/landscape.css") print;
+			@import url("/qb/schedules/landscape.css") print;
 			<?php } else { ?>
-			@import url("/test/QBScheduler/print.css") print;
+			@import url("/qb/schedules/print.css") print;
 			<?php } ?>
 		</style>
 		<title>Viewing a Schedule</title>
@@ -69,7 +69,11 @@ $template = $mysqli->query("SELECT * FROM $_templatedb WHERE id=" . $scheduleinf
 				<?php include("header.php"); ?>
 			</div>
 			<div id="content">
+				<div class="entry printinfo">
+					<p>This schedule is printable. The printed copy will contain a QR code that links to this page. It is recommended that you print in <?php if($template['landscape']) echo("landscape"); else echo("portrait"); ?> mode.</p>
+				</div>
 				<div class="entry">
+					<img id="qrcode" src="<?=$rootpath ?>/generateqr.php?id=<?=$tournamentid ?>" />
 					<?php include("templates/" . $template['url'] . ".php"); ?>
 				</div>
 			</div>

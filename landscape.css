@@ -45,6 +45,8 @@ h2
 
 .name h2
 {
+	width: 7in;
+	margin: auto;
 	font-size: 250%;
 }
 
@@ -66,10 +68,24 @@ th, td
 .instruction
 {
 	width: 9in;
+
 }
 
 .pagebreak
 {
 	display: inherit;
 	page-break-before: always;
+}
+
+#qrcode
+{
+	display: inherit;
+	position: absolute;
+	right: 0px;
+	top: 0px;
+}
+
+.printinfo
+{
+	display: none;
 }

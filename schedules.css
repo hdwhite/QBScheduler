@@ -24,6 +24,24 @@
 	font-size: 175%;
 }
 
+.teamform textarea
+{
+	width: 100%;
+	padding: 1px 3px;
+	overflow: hidden;
+}
+
+.teamform input
+{
+	width: 100%;
+}
+
+.teamform td
+{
+	width: 185px;
+	padding-right: 10px;
+}
+
 .phase
 {
 	margin: 0 auto;
@@ -117,6 +135,11 @@
 }
 
 .pagebreak
+{
+	display: none;
+}
+
+#qrcode
 {
 	display: none;
 }
