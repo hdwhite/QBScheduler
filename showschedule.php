@@ -70,7 +70,7 @@ $template = $mysqli->query("SELECT * FROM $_templatedb WHERE id=" . $scheduleinf
 			</div>
 			<div id="content">
 				<div class="entry printinfo">
-					<p>This schedule is printable. The printed copy will contain a QR code that links to this page. It is recommended that you print in <?php if($template['landscape']) echo("landscape"); else echo("portrait"); ?> mode.</p>
+					<p>This schedule is printable. The printed copy will contain a QR code that links back to this page. It is recommended that you print in <?php if($template['landscape']) echo("landscape"); else echo("portrait"); ?> mode. If you wish to print individualised schedules for each team and room, <a href="<?=$rootpath ?>/<?=$tournamentid ?>/print">click here</a>.</p>
 				</div>
 				<div class="entry">
 					<img id="qrcode" src="<?=$rootpath ?>/generateqr.php?id=<?=$tournamentid ?>" />

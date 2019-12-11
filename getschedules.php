@@ -12,25 +12,27 @@ $bracketdata = $mysqli->query("SELECT * FROM $_bracketdb WHERE tournament=$tourn
 $roomdata = $mysqli->query("SELECT * FROM $_roomdb WHERE tournament=$tournament");
 $teamdata = $mysqli->query("SELECT * FROM $_teamdb WHERE tournament=$tournament");
 $template = $mysqli->query("SELECT * FROM $_templatedb WHERE id=" . $scheduleinfo['format'])->fetch_assoc();
+$numrooms = $template['rooms'];
 
 $prelimbrackets = array();
 $playoffbrackets = array();
 while($curbracket = $bracketdata->fetch_assoc())
 	if($curbracket['phase'] == 0)
-		$prelimbrackets[$curbracket['position']] = (object) ["name" => $curbracket['name'], "matches" => array()];
+		$prelimbrackets[$curbracket['position']] = (object) ["name" => htmlentities($curbracket['name']), "matches" => array()];
 	else
-		$playoffbrackets[$curbracket['position']] = (object) ["name" => $curbracket['name'], "matches" => array()];
+		$playoffbrackets[$curbracket['position']] = (object) ["name" => htmlentities($curbracket['name']), "matches" => array()];
 $bracketarray = (object) ["prelims" => $prelimbrackets, "playoffs" => $playoffbrackets];
 
 $roomarray = array();
 while($curroom = $roomdata->fetch_assoc())
-	$roomarray[$curroom['position']] = (object) ["name" => $curroom['name'], "matches" => array()];
+	if($curroom['position'] < $numrooms)
+		$roomarray[$curroom['position']] = (object) ["name" => htmlentities($curroom['name']), "matches" => array()];
 
 $teamarray = array();
 $playoffteams = array();
 while($curteam = $teamdata->fetch_assoc())
 	if($curteam['phase'] == 0)
-		$teamarray[$curteam['position']] = (object) ["name" => $curteam['name'], "prelimbracket" => NULL, "playoffbracket" => NULL, "matches" => array()];
+		$teamarray[$curteam['position']] = (object) ["name" => htmlentities($curteam['name']), "prelimbracket" => NULL, "playoffbracket" => NULL, "matches" => array()];
 	else
 		$playoffteams[$curteam['position']] = $curteam['name'];
 

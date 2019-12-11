@@ -10,6 +10,7 @@ while($sdetail = $schedulequery->fetch_assoc())
 		"description" => $sdetail['description'] . " (" . $sdetail['rounds'] . " rounds" .
 		($sdetail['games'] == $sdetail['rounds'] ? "" : ", " . $sdetail['games'] . " games minimum") .")",
 		"rounds" => $sdetail['rounds'],
+		"rooms" => $sdetail['rooms'],
 		"brackets" => $sdetail['brackets'],
 		"playoffbrackets" => $sdetail['playoffbrackets'],
 		"playofflist" => $sdetail['playofflist'],
@@ -31,6 +32,7 @@ while($sdetail = $schedulequery->fetch_assoc())
 						$prelimBrackets[$surl] = $sdetails['brackets'];
 						$playoffBrackets[$surl] = $sdetails['playoffbrackets'];
 						$rounds[$surl] = $sdetails['rounds'];
+						$rooms[$surl] = $sdetails['rooms'];
 						$playoffBracketSize[$surl] = $sdetails['playofflist'];
 						$finalstype[$surl] = $sdetails['finalstype'];
 					}
@@ -39,6 +41,7 @@ while($sdetail = $schedulequery->fetch_assoc())
 			var prelimBrackets = <?=json_encode($prelimBrackets) ?>;
 			var playoffBrackets = <?=json_encode($playoffBrackets) ?>;
 			var numRounds = <?=json_encode($rounds) ?>;
+			var numRooms = <?=json_encode($rooms) ?>;
 			var playoffSize = <?=json_encode($playoffBracketSize) ?>;
 			var finalsType = <?=json_encode($finalstype) ?>;
 			var teamList = [];
@@ -143,7 +146,7 @@ while($sdetail = $schedulequery->fetch_assoc())
 							$('#playoffBrackets').attr('required', false);
 						}
 					}
-					$('#rooms').attr('rows', Math.floor(numTeams / 2));
+					$('#rooms').attr('rows', numRooms[url]);
 					var numPrelimBrackets = prelimBrackets[url];
 					var numRows = Math.floor(numTeams / numPrelimBrackets);
 					var extras = numTeams % numPrelimBrackets;
