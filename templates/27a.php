@@ -34,6 +34,7 @@ $bracketparams['numteams'] = 6;
 		<div class="phaserow">
 			<div class="schedule center">
 				<?php
+				$bracketparams['numteams'] = 5;
 				$bracketparams['teamoffset'] = 5*$k+2;
 				$bracketparams['roomoffset'] = 2*$k+2;
 				echo(createBracket($bracketparams));
