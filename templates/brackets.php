@@ -1,6 +1,11 @@
 <?php
+//This creates a standardised bracket for any configuration. It's better than
+//doing a new bracket for each schedule, since there's less possibility of error
+//if I only have to do things once
 function createBracket($params)
 {
+	//Params is an array. It makes things easier to read, and many parameters
+	//are only used part of the time. Number of teams is mandatory, of course.
 	if(array_key_exists("numteams", $params))
 		$numteams = $params['numteams'];
 	else
@@ -8,14 +13,31 @@ function createBracket($params)
 		echo("ERROR: Please set number of teams.");
 		exit;
 	}
+
+	//The ID of the first team in the bracket. Defaults to 0.
 	$teamoffset = (array_key_exists("teamoffset", $params) ? $params['teamoffset'] : 0);
+	//The ID of the first room in the bracket. Defaults to 0.
 	$roomoffset = (array_key_exists("roomoffset", $params) ? $params['roomoffset'] : 0);
+	//The number of the first round of the bracket. Defaults to 1.
 	$firstround = (array_key_exists("firstround", $params) ? $params['firstround'] : 1);
+	//Determines the crossover format. 0 (default) means a full round-robin, while a
+	//value > 1 means that that many teams (at most) were in the same prelim bracket
+	//and should not play each other again.
 	$crossovers = (array_key_exists("crossovers", $params) ? $params['crossovers'] : 0);
+	//Some formats require round-robins with an additional bye. Possible values:
+	//0 (default): Nothing special.
+	//1: Byes for the first half of the rounds in the bracket.
+	//2: Byes on odd-numbered rounds.
+	//3: Byes on even-numbered rounds.
 	$byestyle   = (array_key_exists("byestyle", $params)   ? $params['byestyle']   : 0);
+	//The number of times each team should play each other. Defaults to 1.
 	$iterations = (array_key_exists("iterations", $params) ? $params['iterations'] : 1);
+	//Used if there's a single prelim bracket split into multiple playoff brackets.
+	//It creates all the playoffs in a single table.
 	$inplaceplayoffs = (array_key_exists("inplaceplayoffs", $params) ? $params['inplaceplayoffs'] : 0);
 	
+	//Some tables have team IDs of 99. That means that no teams are scheduled to
+	//play in that room at the given time.
 	$tableheader = "<thead><tr><th>Round</th>";
 	switch($numteams)
 	{
@@ -458,21 +480,27 @@ function createBracket($params)
 						   array(0, 8, 7, 9, 6, 10, 5, 11, 4, 12, 3, 13, 1, 2));
 		break;
 	}
-	
+
+	//Now we work on creating the table headers	
 	for($i = 0; $i < $numrooms; $i++)
 		$tableheader = $tableheader . "<th class=\"room" . ($i + $roomoffset) . "\"></th>";
 	if ($hasbye == 1)
 		$tableheader = $tableheader . "<th>Bye</th>";
 	$tableheader = $tableheader . "</tr></thead>";
 	
+	//The table bodies
 	$tablebody = array();
+	//If the starting round is not 1, it's a playoff
 	$tphase = ($firstround > 1 ? "playoffteam" : "team");
 	foreach($teamorder as $round => $roundorder)
 	{
 		$tablebody[$round] = "<tr><th class='round'>" . ($round + $firstround) . "</th>";
+		//We keep going until we run out of rooms
 		for($j = 0; $j < $numrooms; $j++)
 			$tablebody[$round] .= "<td><span class='$tphase" . ($roundorder[2*$j] + $teamoffset) . "'></span>&nbsp;<br>" .
 			                          "<span class='$tphase" . ($roundorder[2*$j+1]+$teamoffset) . "'></span>&nbsp;</td>";
+		//If we have byes. It's a bit complicated for cases where there are
+		//two or more teams on bye at once.
 		if($hasbye == 1)
 		{
 			$tablebody[$round] .= "<td><span class='$tphase" . ($roundorder[2*$numrooms] + $teamoffset) . "'></span>&nbsp;";

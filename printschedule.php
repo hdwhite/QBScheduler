@@ -1,9 +1,11 @@
 <?php
+//This page includes a printable schedule for each team and room
 require_once("dbnames.inc");
 require_once($_dbconfig);
 require_once("templates/brackets.php");
 $urlarray = explode("/", $_SERVER['REQUEST_URI']);
 $tournamentid = htmlentities($urlarray[3]);
+//Return a 404 if the tournament doesn't exist
 $scheduleinfo = $mysqli->query("SELECT * FROM $_scheduledb WHERE id=$tournamentid")->fetch_assoc();
 if(is_null($scheduleinfo))
 {
@@ -11,11 +13,15 @@ if(is_null($scheduleinfo))
 	require("../../errors/404.php");
 	exit();
 }
+
+//Get the JSON from the GetSchedules page.
+//Should probably be converted to an API call.
 $scheduledata = json_decode(file_get_contents("$rootpath/getschedules.php?t=$tournamentid"), true);
 $teamdata = $scheduledata['teams'];
 $roomdata = $scheduledata['rooms'];
 $bracketdata = $scheduledata['brackets'];
 
+//Gotta figure out how many rounds the tournament takes
 $numrounds = 0;
 foreach($bracketdata['playoffs'] as $curplayoff)
 	$numrounds = max($numrounds, max(array_keys($curplayoff['matches'])));
@@ -39,6 +45,8 @@ if($numrounds == 0)
 			<p>If you only wish to print a schedule for a certain team or room, please consult the following list:</p>
 			<ul>
 <?php
+//This instruction page will not appear when printed
+//We go through each team and room and figure out what page they'd be on
 $curpage = 0;
 foreach($teamdata as $teamid => $curteam)
 {
@@ -57,6 +65,7 @@ foreach($roomdata as $roomid => $curroom)
 			</ul>
 		</div>
 <?php
+//Now for each team, get and print their schedule
 foreach($teamdata as $teamid => $curteam)
 {
 	?>
@@ -69,9 +78,12 @@ foreach($teamdata as $teamid => $curteam)
 	$numprelims = max(array_keys($bracketdata['prelims'][$curteam['prelimbracket']]['matches']));
 	for($i = 1; $i <= $numrounds; $i++)
 	{
+		//If we now who the opponent is, we display it
 		if(array_key_exists($i, $curteam['matches']))
 		{
 			$opponent = $curteam['matches'][$i]['opponent'];
+			//If the opponent ID is 99 or higher, that means we don't know who
+			//they are yet; keep it blank
 			$oname = ($opponent > 98 ? "&nbsp;" : $teamdata[$opponent]['name']);
 			echo("<tr><th>$i</th><td>$oname</td><td>" . $roomdata[$curteam['matches'][$i]['room']]['name'] . "</td></tr>");
 		}
@@ -88,6 +100,7 @@ foreach($teamdata as $teamid => $curteam)
 <?php
 }
 
+//Now to do a schedule for each room
 foreach($roomdata as $roomid => $curroom)
 {
 	?>
@@ -102,6 +115,7 @@ foreach($roomdata as $roomid => $curroom)
 		if(array_key_exists($i, $curroom['matches']))
 		{
 			$curmatch = $curroom['matches'][$i];
+			//Make it blank if we don't know what team will be there
 			$team1 = ($curmatch[0] > 98 ? "&nbsp;" : $teamdata[$curmatch[0]]['name']);
 			$team2 = ($curmatch[1] > 98 ? "&nbsp;" : $teamdata[$curmatch[1]]['name']);
 			echo("<tr><th>$i</th><td>$team1</td><td>$team2</td></tr>");

@@ -1,7 +1,10 @@
 <?php
+//This contains the Javascript logic for the schedule forms.
 require_once("dbnames.inc");
 require_once($_dbconfig);
 require_once("templates/brackets.php");
+//Here we get the information of all of the formats and store them in arrays
+//It's of the form $schedulelist[<Field Size>][<Format name>].
 $schedulequery = $mysqli->query("SELECT * FROM $_templatedb " .
 	"ORDER BY teams ASC, games ASC, rounds ASC") or die($mysqli->error);
 $schedulelist = array();
@@ -22,10 +25,13 @@ while($sdetail = $schedulequery->fetch_assoc())
 		<?php require_once($_SERVER['DOCUMENT_ROOT'] . "/analytics.php"); ?>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 		<script>
+			//I dunno why, but this extra line of comments makes the Vim syntax
+			//highlihting work more reliably.
 			<?php
 				$prelimBrackets = array();
 				$playoffBrackets = array();
 				$playoffBracketSize = array();
+				//Splitting all the format info into separate arrays
 				foreach($schedulelist as $teamschedulelist)
 					foreach($teamschedulelist as $surl => $sdetails)
 					{
@@ -37,6 +43,7 @@ while($sdetail = $schedulequery->fetch_assoc())
 						$finalstype[$surl] = $sdetails['finalstype'];
 					}
 			?>
+			//Initializing variables and transferring PHP to Javascript variables
 			var timeout = null;
 			var prelimBrackets = <?=json_encode($prelimBrackets) ?>;
 			var playoffBrackets = <?=json_encode($playoffBrackets) ?>;
@@ -51,14 +58,20 @@ while($sdetail = $schedulequery->fetch_assoc())
 			var numTeams = 0;
 			var numPackets = 0;
 			var url;
+
+			//Magic goes here
 			$(document).ready(function()
 			{
+				//The update functions can be called on load if we're editing
+				//a tournament, so we split it into two functions
 				$('#numTeams').change(function()
 				{
 					numTeams = $(this).val();
 					updateNumTeams();
 				});
 				
+				//Here we hide the rest of the form and show the appropriate
+				//choices for all format options for the given number of teams
 				function updateNumTeams()
 				{
 					div = $('#' + numTeams + "teamformat");
@@ -74,15 +87,16 @@ while($sdetail = $schedulequery->fetch_assoc())
 					$('.schedulecontent').hide();
 				}
 
-
+				//Once we update the format, we have to do a lot of stuff
 				$('.formatbox').change(function()
 				{
 					url = $(this).attr('id');
 					updateFormat();
 				});
-
 				function updateFormat()
 				{
+					//Here we get all the teams (and possibly playoff teams) and
+					//Store them into arrays for now
 					for (i = 7; i >= 0; i--)
 					{
 						teamList = $('#teams' + i).val().split('\n').concat(teamList);
@@ -92,16 +106,22 @@ while($sdetail = $schedulequery->fetch_assoc())
 						$('#playoffteams' + i).val('');
 						<?php } ?>
 					}
+					//Removing empty elements form the arrays
 					teamList = teamList.filter(function(e){return e});
 					playoffTeamList = playoffTeamList.filter(function(e){return e});
-					numPackets = parseInt(numRounds[url]);
+
+					//Show all the necessary bits
 					$('.teamform').show();
 					$('#teampreface').show();
 					$('#teamtable').show();
 					$('.roomblock').show();
 					$('.finals').prop('checked', false);
 					$('.finalsformat').hide();
+					numPackets = parseInt(numRounds[url]);
 					numPlayoffBrackets = playoffBrackets[url];
+
+					//If there are no playoff brackets, then we are using a
+					//single-elimination format. (Might probably be unneeded.)
 					if (numPlayoffBrackets == 0)
 					{
 						$('#singleelim').show();
@@ -113,12 +133,16 @@ while($sdetail = $schedulequery->fetch_assoc())
 					}
 					else
 					{
+						//Finals type of 0: A single top bracket
+						//Finals type of 1: Two parallel top brackets
 						if(finalsType[url] == 0)
 							$('#rrfinals').show();
 						else if(finalsType[url] == 1)
 							$('#crossfinals').show();
 						$('#packets').hide();
 						$('.finals').prop('required', true);
+
+						//Gotta show the right number of playoff brackets if they exist
 						if(numPlayoffBrackets > 1)
 						{
 							$('.playoffBrackets').show();
@@ -136,6 +160,7 @@ while($sdetail = $schedulequery->fetch_assoc())
 								$('#playoffteams' + i).show();
 								curSize = bracketSizes[i];
 								$('#playoffteams' + i).attr('rows', curSize);
+								//Put all the teams in the brackets
 								$('#playoffteams' + i).val(playoffTeamList.slice(0, curSize).join('\n'));
 								playoffTeamList = playoffTeamList.slice(curSize);
 							}
@@ -147,6 +172,8 @@ while($sdetail = $schedulequery->fetch_assoc())
 						}
 					}
 					$('#rooms').attr('rows', numRooms[url]);
+
+					//Now we do the same thing with prelim brackets
 					var numPrelimBrackets = prelimBrackets[url];
 					var numRows = Math.floor(numTeams / numPrelimBrackets);
 					var extras = numTeams % numPrelimBrackets;
@@ -172,6 +199,8 @@ while($sdetail = $schedulequery->fetch_assoc())
 						$('#teams' + i).val(teamList.slice(0, tempRows).join('\n'));
 						teamList = teamList.slice(tempRows);
 					}
+
+					//Don't need to show bracket names if there's only one
 					if (numPrelimBrackets == 1)
 					{
 						$('#prelimBracket0').hide();
@@ -186,11 +215,12 @@ while($sdetail = $schedulequery->fetch_assoc())
 					updateTeams();
 				}
 
+				//Updating finals format is easy. Just gotta update the number
+				//of packets and the text describing the finals.
 				$('.finals').change(function()
 				{
 					updateFinals(parseInt($(this).attr('value')));
 				});
-
 				function updateFinals(finalsFormat)
 				{
 					numPackets = parseInt(numRounds[url]) + finalsFormat;
@@ -207,59 +237,68 @@ while($sdetail = $schedulequery->fetch_assoc())
 						$('.finals' + finalsFormat).show();
 				}
 
+				//Updating the name. Easy enough.
 				$('#tournamentname').on('input', function()
 				{
 					updateTourneyName($('#tournamentname').val());
 				});
-
 				function updateTourneyName(tourneyName)
 				{
 					$('.tourneyname').text(tourneyName);
 				}
 
+				//Updating rooms is also easy, but we wait until there's been no
+				//activity for 0.5 second to prevent lag from updating too quickly 
 				$('#rooms').on('input', function()
 				{
 					roomList = $('#rooms').val().split('\n');
 					clearTimeout(timeout)
 					timeout = setTimeout(function() { updateRooms(); }, 500);
 				});
-
 				function updateRooms()
 				{
 					for (i = 0; i < roomList.length; i++)
 						$('.room' + i).text(roomList[i]);
 				}
 
+				//We do the same timeout check with team names
 				$('.teaminput').on('input', function()
 				{
 					clearTimeout(timeout)
 					timeout = setTimeout(function() { updateTeams(); }, 500);
 				});
-
 				function updateTeams()
 				{
+					//We need to clear the team names first, in case a row has
+					//been deleted
 					for (i = 0; i < numTeams; i++)
 					{
 						$('.team' + i).text('');
 						$('.playoffteam' + i).text('');
 					}
+
 					teamList = [];
 					playoffTeamList = [];
 					var curteamid = 0;
+					//We go through each bracket and display the new team names
 					for (i = 0; i < 8; i++)
 					{
 						teamList = $('#teams' + i).val().split('\n');
+						//It's important to know how big the bracket is
 						numTeamsInBracket = parseInt($('#teams' + i).attr('rows'));
 						$('.prelimbracket' + i).text($("#prelimBracket" + i).val() + '\xa0');
+						//We keep adding teams to the bracket until it fills up
 						for (j = 0; j < teamList.length; j++)
 						{
 							if (j == numTeamsInBracket)
 								break;
 							$('.team' + (curteamid + j)).text(teamList[j]);
 						}
+						//Used if the number of teams entered is less than the bracket size
 						curteamid = curteamid + numTeamsInBracket;
 					}
 
+					//And now we do the same for playoff teams
 					var curteamid = 0;
 					for (i = 0; i < 8; i++)
 					{
@@ -276,12 +315,12 @@ while($sdetail = $schedulequery->fetch_assoc())
 					}
 				}
 
+				//You get the drill now
 				$('#playoffBrackets').on('input', function()
 				{
 					clearTimeout(timeout)
 					timeout = setTimeout(function() { updatePlayoffBrackets(); }, 500);
 				});
-
 				function updatePlayoffBrackets()
 				{
 					playoffBracketList = $('#playoffBrackets').val().split('\n');
@@ -289,6 +328,8 @@ while($sdetail = $schedulequery->fetch_assoc())
 						$('.playoffbracket' + i).text(playoffBracketList[i] + '\xa0');
 				}
 
+				//Gonna be honest, I'm not quite sure why this is here.
+				//I think it might have been from an earlier design.
 				<?php if(isset($_POST['numTeams'])) { ?>
 					var startTeams = <?=$_POST['numTeams'] ?>;
 					var startUrl = "<?=$_POST[$_POST['numTeams'] . "teamschedules"] ?>";
@@ -298,13 +339,19 @@ while($sdetail = $schedulequery->fetch_assoc())
 						$('#<?=$_POST['finals'] ?>').prop('checked', true).trigger("change");
 				<?php }} ?>
 				
+				//If you're editing, you need to prefill the fields
 				<?php if($mode === "edit") { ?>
+					//Tournament name
 					tname = <?=json_encode($tourneyname) ?>;
 					document.title = "Editing " + tname;
 					$('#headername').text(tname);
+
+					//Number of teams
 					$('#numTeams').val(<?=$formatteams ?>);
 					numTeams = <?=$formatteams ?>;
 					updateNumTeams();
+
+					//Specific tournament format
 					$('#<?=$formatcode ?>').prop("checked", true);
 					url = '<?=$formatcode ?>';
 					updateFormat();
@@ -316,22 +363,35 @@ while($sdetail = $schedulequery->fetch_assoc())
 						<?php } ?>
 						updateFinals(<?=$numfinals ?>);
 					<?php } ?>
+
+					//Tournament name
 					updateTourneyName(tname);
+
+					//Room names
 					$('#rooms').val(<?=json_encode($roomlist) ?>.join("\n"));
 					roomList = <?=json_encode($roomlist) ?>;
 					updateRooms();
+
+					//Team names
 					<?php for($i = 0; $i < count($bracketdata); $i++) { ?>
 						$('#teams<?=$i ?>').val(<?=json_encode($bracketdata[$i]) ?>.join("\n"));
 					<?php } ?>
+
+					//Prelim bracket names
 					<?php foreach($prelimbracketnames as $sequence => $name) { ?>
 						$('#prelimBracket<?=$sequence ?>').val(<?=json_encode($name) ?>);
 					<?php } ?>
+
+					//Playoff team names
 					<?php for($i = 0; $i < count($playoffbracketdata); $i++) { ?>
 						$('#playoffteams<?=$i ?>').val(<?=json_encode($playoffbracketdata[$i]) ?>.join("\n"));
 					<?php } ?>
+
+					//Playoff bracket names
 					<?php foreach($playoffbracketnames as $sequence => $name) { ?>
 						$('#playoffBracket<?=$sequence ?>').val(<?=json_encode($name) ?>);
 					<?php } ?>
+
 					updateTeams();
 					$('#playoffBrackets').val(<?=json_encode($playoffbracketnames) ?>.join("\n"));
 					updatePlayoffBrackets();

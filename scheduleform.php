@@ -1,4 +1,6 @@
-<?php if($mode === "edit") { ?>
+<?php 
+//This is the body of the schedule creation/edit pages. It's mostly forms.
+if($mode === "edit") { ?>
 <div class="entry">
 	<h4>You are in edit mode</h4>
 	<p>Anyone who has access to this URL can edit your tournament schedule at will. Please only share this page with people whom you trust. Save this URL, as it is the only way to edit a schedule without having to create a new one from scratch.</p>
@@ -105,6 +107,8 @@
 	</form>
 </div>
 <?php
+	//This loads each schedule template in, but hides them all until needed.
+	//There might be a better way of doing this.
 	foreach ($schedulelist as $numteams => $teamschedulelist)
 	{
 		foreach ($teamschedulelist as $surl => $sdetails)

@@ -1,10 +1,14 @@
 <?php
+//In this page the user can modify an existing schedule. The URL is of the form
+//schedules/<num>/edit/<editcode>.
 $urlarray = explode("/", $_SERVER['REQUEST_URI']);
 $tournamentid = htmlentities($urlarray[3]);
 $editcode = htmlentities($urlarray[5]);
 $mode = "edit";
 require_once("dbnames.inc");
 require_once($_dbconfig);
+
+//If there's no tournament with that number, throw a 404 error
 $scheduleinfo = $mysqli->query("SELECT * FROM $_scheduledb WHERE id=$tournamentid")->fetch_assoc();
 if(is_null($scheduleinfo))
 {
@@ -12,6 +16,7 @@ if(is_null($scheduleinfo))
 	require("../../errors/404.php");
 	exit();
 }
+//If the edit code is incorrect, throw a 403 error
 if($scheduleinfo['editcode'] !== $editcode)
 {
 	header("HTTP/1.0 403 Forbidden");
@@ -19,6 +24,7 @@ if($scheduleinfo['editcode'] !== $editcode)
 	exit();
 }
 
+//Get info about the current format
 $formatinfo = $mysqli->query("SELECT * FROM $_templatedb WHERE id=" . $scheduleinfo['format'])->fetch_assoc();
 $formatteams = $formatinfo['teams'];
 $formatcode = $formatinfo['url'];
@@ -27,6 +33,7 @@ $numfinals = $scheduleinfo['finals'];
 $tourneyname = $scheduleinfo['name'];
 $playoffsizes = explode(",", $formatinfo['playofflist']);
 
+//Prepare the initial room, bracket, and team lists
 $roomlist = Array();
 $roominfo = $mysqli->query("SELECT * FROM $_roomdb WHERE tournament=$tournamentid ORDER BY position ASC");
 while($curroom = $roominfo->fetch_assoc())

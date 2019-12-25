@@ -1,4 +1,5 @@
 <?php
+//This page displays a given schedule.
 $urlarray = explode("/", $_SERVER['REQUEST_URI']);
 $tournamentid = htmlentities($urlarray[3]);
 require_once("dbnames.inc");
@@ -25,6 +26,8 @@ $template = $mysqli->query("SELECT * FROM $_templatedb WHERE id=" . $scheduleinf
 		<script>
 			$(document).ready(function()
 			{
+				//First things first, we gotta display everything once it loads
+				//Also the text() function is slightly less vulnerable to injection
 				tournamentname = <?=json_encode($scheduleinfo['name']) ?>;
 				$('.tourneyname').text(tournamentname);
 				<?php

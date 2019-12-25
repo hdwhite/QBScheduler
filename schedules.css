@@ -1,3 +1,5 @@
+/* CSS that is unique to the schedule editor. It doesn't contain everything,
+   since it uses the CSS for hdwhite.org as a template. */
 .scontainer
 {
 	width: 10.5in;

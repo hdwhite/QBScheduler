@@ -1,4 +1,6 @@
 <?php
+//This creates a JSON object with all the tournament info
+//At some point I ought to change this to API queries
 require_once("dbnames.inc");
 require_once($_dbconfig);
 $tournament = $_GET['t'];
