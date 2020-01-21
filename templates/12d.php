@@ -1,7 +1,7 @@
 <?php
 $bracketparams = array();
 $bracketparams['numteams'] = 12;
-$byestyle = 1;
+$bracketparams['byestyle'] = 1;
 ?>
 <div class="scontainer">
 	<div class="name">
