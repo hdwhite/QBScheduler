@@ -1,0 +1,3 @@
+RewriteRule ^([0-9]+)/?$ showschedule.php/$1 [L]
+RewriteRule ^([0-9]+)/edit/([0-9a-z]+)/?$ editschedule.php/$1/$2 [L]
+RewriteRule ^([0-9]+)/print/?$ printschedule.php/$1 [L]
