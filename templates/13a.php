@@ -15,7 +15,7 @@ $bracketparams['numteams'] = 13;
 		</div>
 	</div>
 	<div class="instruction">
-		<p>Teams will play every other team once, for a twelve-game round-robin. After the final game, the champion will be detrmined as follows:</p>
+		<p>Teams will play every other team once, for a twelve-game round-robin. After the final game, the champion will be determined as follows:</p>
 		<ul>
 			<li class="finals2 finals3" style="display:none">If the first-place team has two or more wins than every other team, then that team wins the tournament outright without the need for a final.</li>
 			<li class="finals1" style="display:none">If there is a single team with the best record, then that team wins the tournament outright without the need for a final.</li>
