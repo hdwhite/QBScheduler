@@ -1,5 +1,7 @@
-<?php 
+<?php
 //This is the body of the schedule creation/edit pages. It's mostly forms.
+if(!isset($tournamentid)) $tournamentid = 0;
+if(!isset($tourneyname)) $toiurneyname = "";
 if($mode === "edit") { ?>
 <div class="entry">
 	<h4>You are in edit mode</h4>

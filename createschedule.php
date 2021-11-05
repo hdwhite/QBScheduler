@@ -30,7 +30,6 @@ $formatid = $formatdetails['id'];
 $numprelims = $formatdetails['brackets'];
 $numplayoffs = $formatdetails['playoffbrackets'];
 $playoffformat = explode(",", $formatdetails['playofflist']);
-
 //If there's a pre-existing tournament ID, that means we're editing a schedule
 if($tournamentid > 0)
 {
