@@ -36,7 +36,7 @@ $bracketparams['numteams'] = 9;
 				<h2 class="tourneyname">&nbsp;</h2>
 			</div>
 		</div>
-		<h3 class="prelimbracket<?=$k ?>">&nbsp;</h3>
+		<h3 class="prelimbracket2">&nbsp;</h3>
 		<div class="phaserow">
 			<div class="schedule center">
 				<?php
@@ -46,7 +46,6 @@ $bracketparams['numteams'] = 9;
 				?>
 			</div>
 		</div>
-		<?php } ?>
 	</div>
 	<div class="instruction">
 		<p>Teams will be initially seeded into three brackets of nine, in which they will play a full round-robin. Afterwards, teams will be placed into three playoff brackets of nine based on their performance in the preliminary rounds. Each team will once again play a round-robin within their new bracket, with the exception of the teams they played in the prelims. Only games against teams in the same playoff bracket will count towards final standing within each bracket. Finals in the top bracket will be played according to the following criteria:</p>
