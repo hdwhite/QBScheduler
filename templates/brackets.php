@@ -349,13 +349,13 @@ function createBracket($params)
 							   array(3, 4, 2, 5, 1, 6, 0, 7, 8));
 			break;
 		case 3:
-			$teamorder = array(array(0, 5, 4, 6, 2, 7, 1, 8, 3),
-							   array(1, 4, 0, 8, 5, 6, 2, 3, 7),
-							   array(2, 6, 4, 7, 1, 3, 5, 8, 0),
-							   array(2, 8, 1, 5, 0, 4, 3, 7, 6),
-							   array(1, 7, 3, 8, 2, 4, 0, 6, 5),
-							   array(0, 3, 1, 6, 5, 7, 4, 8, 2),
-							   array(3, 6, 0, 7, 2, 5, 99, 99, 1, 4, 8));
+			$teamorder = array(array(0, 4, 5, 6, 1, 7, 2, 8, 3),
+							   array(2, 5, 0, 8, 4, 6, 1, 3, 7),
+							   array(1, 6, 5, 7, 2, 3, 4, 8, 0),
+							   array(1, 8, 2, 4, 0, 5, 3, 7, 6),
+							   array(2, 7, 3, 8, 1, 5, 0, 6, 4),
+							   array(0, 3, 2, 6, 4, 7, 5, 8, 1),
+							   array(3, 6, 0, 7, 1, 4, 99, 99, 2, 5, 8));
 			break;
 		case 5:
 			$teamorder = array(array(3, 7, 4, 8, 1, 5, 2, 6, 0),
