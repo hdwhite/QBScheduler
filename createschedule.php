@@ -47,8 +47,9 @@ if($tournamentid > 0)
 	if($scheduleinfo['editcode'] != $editcode)
 		exit();
 	//Update the existing entry while deleting the old bracket, room, and team info
-	$schedulestmt = $mysqli->prepare("UPDATE $_scheduledb SET name = ?, format = ?, finals = ? WHERE id=$tournamentid");
-	$schedulestmt->bind_param("sii", $tournamentname, $formatid, $numfinals);
+	$curtime = date("Y-m-d H:i:s");
+	$schedulestmt = $mysqli->prepare("UPDATE $_scheduledb SET name = ?, format = ?, finals = ?, updated = ? WHERE id=$tournamentid");
+	$schedulestmt->bind_param("siis", $tournamentname, $formatid, $numfinals, $curtime);
 	$schedulestmt->execute();
 	$mysqli->query("DELETE FROM $_bracketdb WHERE tournament=$tournamentid");
 	$mysqli->query("DELETE FROM $_roomdb WHERE tournament=$tournamentid");
