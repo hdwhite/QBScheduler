@@ -14,7 +14,7 @@ if($mode === "edit") { ?>
 	<p>The Quizbowl Schedule Generator allows you to create and edit schedules for high school and college tournaments. Simply fill in the relevant information in the form below, watch the schedule appear in real time, and click on Generate to create an online schedule that you can share to your teams and rooms. You will also be able to edit schedules to include playoffs or to accommodate last-minute signups or drops.</p><br>
 	<p><b>This tool is still in development.</b> I hope no bugs made it to production, but if you find anything wrong, even if it's as simple as a typo or a wrong round number, please either <a href="https://github.com/hdwhite/QBScheduler/issues">create an issue on Github</a>, <a href="mailto:contact@hdwhite.org">email me</a>, or <a href="https://hsquizbowl.org/forums/viewtopic.php?f=123&t=23356">post on the HSQuizbowl Forums</a> so I can work on fixing it.</p><br>
 	<p>If you are running a tournament, I would highly suggest reading through Chris Chiego's <a href="https://socalquizbowl.org/tournament-hosting-guide/">tournament hosting guide</a>. It contains very detailed instructions on hosting and best practices.</p><br>
-	<p>Not sure how a certain aspect of the schedule works? Feel free to browse the <a href="faq">FAQ</a>.</p>
+	<p>Not sure how a certain aspect of the schedule works? Feel free to browse the <a href="<?=$rootpath ?>/faq">FAQ</a>.</p>
 </div>
 <div class="entry">
 	<form action="/qb/schedules/createschedule.php" method="post">

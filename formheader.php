@@ -9,15 +9,16 @@ $schedulequery = $mysqli->query("SELECT * FROM $_templatedb " .
 	"ORDER BY teams ASC, games ASC, rounds ASC") or die($mysqli->error);
 $schedulelist = array();
 while($sdetail = $schedulequery->fetch_assoc())
-	$schedulelist[$sdetail['teams']][$sdetail['url']] = array(
-		"description" => $sdetail['description'] . " (" . $sdetail['rounds'] . " rounds" .
-		($sdetail['games'] == $sdetail['rounds'] ? "" : ", " . $sdetail['games'] . " games minimum") .")",
-		"rounds" => $sdetail['rounds'],
-		"rooms" => $sdetail['rooms'],
-		"brackets" => $sdetail['brackets'],
-		"playoffbrackets" => $sdetail['playoffbrackets'],
-		"playofflist" => $sdetail['playofflist'],
-		"finalstype" => $sdetail['finalstype']);
+	if($sdetail['id'] > 0)
+		$schedulelist[$sdetail['teams']][$sdetail['url']] = array(
+			"description" => $sdetail['description'] . " (" . $sdetail['rounds'] . " rounds" .
+			($sdetail['games'] == $sdetail['rounds'] ? "" : ", " . $sdetail['games'] . " games minimum") .")",
+			"rounds" => $sdetail['rounds'],
+			"rooms" => $sdetail['rooms'],
+			"brackets" => $sdetail['brackets'],
+			"playoffbrackets" => $sdetail['playoffbrackets'],
+			"playofflist" => $sdetail['playofflist'],
+			"finalstype" => $sdetail['finalstype']);
 ?>
 <!DOCTYPE html>
 <html>
