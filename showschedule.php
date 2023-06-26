@@ -16,7 +16,7 @@ $bracketdata = $mysqli->query("SELECT * FROM $_bracketdb WHERE tournament=$tourn
 $roomdata = $mysqli->query("SELECT * FROM $_roomdb WHERE tournament=$tournamentid");
 $teamdata = $mysqli->query("SELECT * FROM $_teamdb WHERE tournament=$tournamentid AND phase=0");
 $playoffdata = $mysqli->query("SELECT * FROM $_teamdb WHERE tournament=$tournamentid AND phase=1");
-$template = $mysqli->query("SELECT * FROM $_templatedb WHERE id=" . $scheduleinfo['format'])->fetch_assoc();
+$template = json_decode(file_get_contents("templates.json"))->schedules->$scheduleinfo['format'];
 ?>
 
 <html>
@@ -57,7 +57,7 @@ $template = $mysqli->query("SELECT * FROM $_templatedb WHERE id=" . $scheduleinf
 			@import url("/harry.css");
 			@import url("/harrybig.css");
 			@import url("/qb/schedules/schedules.css");
-			<?php if($template['landscape']) { ?>
+			<?php if($template->landscape) { ?>
 			@import url("/qb/schedules/landscape.css") print;
 			<?php } else { ?>
 			@import url("/qb/schedules/print.css") print;
@@ -73,11 +73,11 @@ $template = $mysqli->query("SELECT * FROM $_templatedb WHERE id=" . $scheduleinf
 			</div>
 			<div id="content">
 				<div class="entry printinfo">
-					<p>This schedule is printable. The printed copy will contain a QR code that links back to this page. It is recommended that you print in <?php if($template['landscape']) echo("landscape"); else echo("portrait"); ?> mode. If you wish to print individualised schedules for each team and room, <a href="<?=$rootpath ?>/<?=$tournamentid ?>/print">click here</a>.</p>
+					<p>This schedule is printable. The printed copy will contain a QR code that links back to this page. It is recommended that you print in <?php if($template->landscape) echo("landscape"); else echo("portrait"); ?> mode. If you wish to print individualised schedules for each team and room, <a href="<?=$rootpath ?>/<?=$tournamentid ?>/print">click here</a>.</p>
 				</div>
 				<div class="entry">
 					<img id="qrcode" src="<?=$rootpath ?>/generateqr.php?id=<?=$tournamentid ?>" />
-					<?php include("templates/" . $template['url'] . ".php"); ?>
+					<?php include("templates/" . $scheduleinfo['format'] . ".php"); ?>
 				</div>
 			</div>
 <?php include("footer.php"); ?>	

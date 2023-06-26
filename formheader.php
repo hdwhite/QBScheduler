@@ -5,25 +5,23 @@ require_once($_dbconfig);
 require_once("templates/brackets.php");
 //Here we get the information of all of the formats and store them in arrays
 //It's of the form $schedulelist[<Field Size>][<Format name>].
-$schedulequery = $mysqli->query("SELECT * FROM $_templatedb " .
-	"ORDER BY teams ASC, games ASC, rounds ASC") or die($mysqli->error);
+$schedulejson = json_decode(file_get_contents("templates.json"))->schedules;
 $schedulelist = array();
-while($sdetail = $schedulequery->fetch_assoc())
-	if($sdetail['id'] > 0)
-		$schedulelist[$sdetail['teams']][$sdetail['url']] = array(
-			"description" => $sdetail['description'] . " (" . $sdetail['rounds'] . " rounds" .
-			($sdetail['games'] == $sdetail['rounds'] ? "" : ", " . $sdetail['games'] . " games minimum") .")",
-			"rounds" => $sdetail['rounds'],
-			"rooms" => $sdetail['rooms'],
-			"brackets" => $sdetail['brackets'],
-			"playoffbrackets" => $sdetail['playoffbrackets'],
-			"playofflist" => $sdetail['playofflist'],
-			"finalstype" => $sdetail['finalstype']);
+foreach($schedulejson as $sid => $sdetail)
+	$schedulelist[$sdetail->teams][$sid] = array(
+		"description" => $sdetail->description . " (" . $sdetail->rounds . " rounds" .
+		($sdetail->games == $sdetail->rounds ? "" : ", " . $sdetail->games . " games minimum") .")",
+		"rounds" => $sdetail->rounds,
+		"rooms" => $sdetail->rooms,
+		"brackets" => $sdetail->brackets,
+		"hasplayoffs" => $sdetail->hasPlayoffs,
+		"playoffbrackets" => ($sdetail->hasPlayoffs ? $sdetail->playoffBrackets : null),
+		"finalstype" => $sdetail->finalsType);
+ksort($schedulelist);
 ?>
 <!DOCTYPE html>
 <html>
 	<head>
-		<?php require_once($_SERVER['DOCUMENT_ROOT'] . "/analytics.php"); ?>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 		<script>
 			//I dunno why, but this extra line of comments makes the Vim syntax
@@ -40,7 +38,6 @@ while($sdetail = $schedulequery->fetch_assoc())
 						$playoffBrackets[$surl] = $sdetails['playoffbrackets'];
 						$rounds[$surl] = $sdetails['rounds'];
 						$rooms[$surl] = $sdetails['rooms'];
-						$playoffBracketSize[$surl] = $sdetails['playofflist'];
 						$finalstype[$surl] = $sdetails['finalstype'];
 					}
 			?>
@@ -50,7 +47,6 @@ while($sdetail = $schedulequery->fetch_assoc())
 			var playoffBrackets = <?=json_encode($playoffBrackets) ?>;
 			var numRounds = <?=json_encode($rounds) ?>;
 			var numRooms = <?=json_encode($rooms) ?>;
-			var playoffSize = <?=json_encode($playoffBracketSize) ?>;
 			var finalsType = <?=json_encode($finalstype) ?>;
 			var teamList = [];
 			var playoffTeamList = [];
@@ -119,11 +115,11 @@ while($sdetail = $schedulequery->fetch_assoc())
 					$('.finals').prop('checked', false);
 					$('.finalsformat').hide();
 					numPackets = parseInt(numRounds[url]);
-					numPlayoffBrackets = playoffBrackets[url];
+					curPlayoffBrackets = playoffBrackets[url];
 
 					//If there are no playoff brackets, then we are using a
 					//single-elimination format. (Might probably be unneeded.)
-					if (numPlayoffBrackets == 0)
+					if (finalsType[url] == "singleelim")
 					{
 						$('#singleelim').show();
 						$('#numpackets').html(numPackets);
@@ -136,34 +132,32 @@ while($sdetail = $schedulequery->fetch_assoc())
 					{
 						//Finals type of 0: A single top bracket
 						//Finals type of 1: Two parallel top brackets
-						if(finalsType[url] == 0)
+						if(finalsType[url] == "standard")
 							$('#rrfinals').show();
-						else if(finalsType[url] == 1)
+						else if(finalsType[url] == "parallel")
 							$('#crossfinals').show();
 						$('#packets').hide();
 						$('.finals').prop('required', true);
 
 						//Gotta show the right number of playoff brackets if they exist
-						if(numPlayoffBrackets > 1)
+						if(curPlayoffBrackets != null)
 						{
 							$('.playoffBrackets').show();
-							$('#playoffBrackets').attr('rows', playoffBrackets[url]);
+							$('#playoffBrackets').attr('rows', curPlayoffBrackets.length);
 							$('#playoffBrackets').attr('required', true);
-							bracketSizes = playoffSize[url].split(",");
 							for (i = 0; i < 8; i++)
 							{
 								$('#playoffBracket' + i).hide();
 								$('#playoffteams' + i).hide();
 							}
-							for (i = 0; i < numPlayoffBrackets; i++)
+							for (i = 0; i < curPlayoffBrackets.length; i++)
 							{
 								$('#playoffBracket' + i).show();
 								$('#playoffteams' + i).show();
-								curSize = bracketSizes[i];
-								$('#playoffteams' + i).attr('rows', curSize);
+								$('#playoffteams' + i).attr('rows', curPlayoffBrackets[i]);
 								//Put all the teams in the brackets
-								$('#playoffteams' + i).val(playoffTeamList.slice(0, curSize).join('\n'));
-								playoffTeamList = playoffTeamList.slice(curSize);
+								$('#playoffteams' + i).val(playoffTeamList.slice(0, curPlayoffBrackets[i]).join('\n'));
+								playoffTeamList = playoffTeamList.slice(curPlayoffBrackets[i]);
 							}
 						}
 						else
@@ -232,9 +226,7 @@ while($sdetail = $schedulequery->fetch_assoc())
 						$('.finals' + i).hide();
 						$('.finals' + i).hide();
 					}
-					if(finalsType[url] == 0)
-						$('.finals' + finalsFormat).show();
-					else if(finalsType[url] == 1)
+					if(finalsType[url] == "standard" || finalsType[url] == "parallel")
 						$('.finals' + finalsFormat).show();
 				}
 
@@ -300,6 +292,7 @@ while($sdetail = $schedulequery->fetch_assoc())
 					}
 
 					//And now we do the same for playoff teams
+					<?php if($mode === "edit") { ?>
 					var curteamid = 0;
 					for (i = 0; i < 8; i++)
 					{
@@ -314,6 +307,7 @@ while($sdetail = $schedulequery->fetch_assoc())
 						}
 						curteamid = curteamid + numTeamsInBracket;
 					}
+					<?php } ?>
 				}
 
 				//You get the drill now
@@ -353,8 +347,8 @@ while($sdetail = $schedulequery->fetch_assoc())
 					updateNumTeams();
 
 					//Specific tournament format
-					$('#<?=$formatcode ?>').prop("checked", true);
-					url = '<?=$formatcode ?>';
+					$('#<?=$scheduleinfo['format'] ?>').prop("checked", true);
+					url = '<?=$scheduleinfo['format'] ?>';
 					updateFormat();
 					<?php if($numfinals > 0) { 
 						if($formatfinals == 0) { ?>

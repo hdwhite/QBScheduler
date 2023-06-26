@@ -25,13 +25,15 @@ if($scheduleinfo['editcode'] !== $editcode)
 }
 
 //Get info about the current format
-$formatinfo = $mysqli->query("SELECT * FROM $_templatedb WHERE id=" . $scheduleinfo['format'])->fetch_assoc();
-$formatteams = $formatinfo['teams'];
-$formatcode = $formatinfo['url'];
-$formatfinals = $formatinfo['finalstype'];
+$formatjson = json_decode(file_get_contents("templates.json"))->schedules;
+$formatinfo = $formatjson->{$scheduleinfo['format']};
+$formatteams = $formatinfo->teams;
+$formatfinals = $formatinfo->finalsType;
 $numfinals = $scheduleinfo['finals'];
 $tourneyname = $scheduleinfo['name'];
-$playoffsizes = explode(",", $formatinfo['playofflist']);
+$hasplayoffs = $formatinfo->hasPlayoffs;
+if($hasplayoffs)
+	$playoffsizes = $formatinfo->playoffBrackets;
 
 //Prepare the initial room, bracket, and team lists
 $roomlist = Array();

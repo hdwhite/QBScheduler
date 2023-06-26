@@ -9,7 +9,7 @@ $tournamentid = $_POST['tournamentid'];
 $editcode = $_POST['hash'];
 $tournamentname = trim($_POST['name']);
 $numteams = $_POST['numTeams'];
-$format = $_POST[$numteams . 'teamschedules'];
+$formatid = $_POST[$numteams . 'teamschedules'];
 $prelimbrackets = array();
 $teamlist = array();
 $playofflist = array();
@@ -25,11 +25,12 @@ if($submit != "Generate")
 	exit();
 
 //Gets the details of the particular format used
-$formatdetails = $mysqli->query("SELECT * FROM $_templatedb WHERE url='$format'")->fetch_assoc();
-$formatid = $formatdetails['id'];
-$numprelims = $formatdetails['brackets'];
-$numplayoffs = $formatdetails['playoffbrackets'];
-$playoffformat = explode(",", $formatdetails['playofflist']);
+$formatjson = json_decode(file_get_contents("templates.json"))->schedules;
+$formatdetails = $formatjson->$formatid;
+$numprelims = $formatdetails->brackets;
+$hasplayoffs = $formatdetails->hasPlayoffs;
+if($hasplayoffs)
+	$playoffformat = $formatdetails->playoffbrackets;
 //If there's a pre-existing tournament ID, that means we're editing a schedule
 if($tournamentid > 0)
 {
@@ -63,7 +64,7 @@ else
 	//TODO: Create a better editcode generation method
 	$editcode = substr(md5(json_encode($_POST) . microtime()), 0, 8);
 	$schedulestmt = $mysqli->prepare("INSERT INTO $_scheduledb (name, format, finals, editcode) VALUES(?, ?, ?, ?)");
-	$schedulestmt->bind_param("siis", $tournamentname, $formatid, $numfinals, $editcode);
+	$schedulestmt->bind_param("ssis", $tournamentname, $formatid, $numfinals, $editcode);
 	$schedulestmt->execute();
 	$tournamentid = $mysqli->insert_id;
 }
@@ -95,11 +96,11 @@ for($position = 0; $position < $numprelims; $position++)
 }
 
 //Don't need to do this if there aren't playoff brackets
-if($numplayoffs > 1)
+if($hasplayoffs)
 {
 	$phase = 1;
 	$bracketstart = 0;
-	for($position = 0; $position < $numplayoffs; $position++)
+	for($position = 0; $position < count($playoffbrackets); $position++)
 	{
 		$bracketname = trim($playoffbrackets[$position]);
 		$bracketstmt->execute();

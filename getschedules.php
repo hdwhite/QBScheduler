@@ -13,9 +13,9 @@ if(is_null($scheduleinfo))
 $bracketdata = $mysqli->query("SELECT * FROM $_bracketdb WHERE tournament=$tournament");
 $roomdata = $mysqli->query("SELECT * FROM $_roomdb WHERE tournament=$tournament");
 $teamdata = $mysqli->query("SELECT * FROM $_teamdb WHERE tournament=$tournament");
-$template = $mysqli->query("SELECT * FROM $_templatedb WHERE id=" . $scheduleinfo['format'])->fetch_assoc();
-$numteams = $template['teams'];
-$numrooms = $template['rooms'];
+$template = json_decode(file_get_contents("templates.json"))->$scheduleinfo['format'];
+$numteams = $template->teams;
+$numrooms = $template->rooms;
 
 $prelimbrackets = array();
 $playoffbrackets = array();
@@ -58,13 +58,13 @@ foreach($playoffteams as $playoffid => $curplayoff)
 	}
 }
 
-$maxrounds = $template['rounds'];
+$maxrounds = $template->rounds;
 $roundarray = array();
 for($i = 1 ; $i <= $maxrounds; $i++)
 	$roundarray[$i] = array();
 
-$hasbrackets = ($template['brackets'] > 1);
-$templateurl = $template['url'];
+$hasbrackets = ($template->brackets > 1);
+$templateurl = $scheduleinfo['format'];
 $filetext = file_get_contents("$rootpath/$tournament");
 
 if($hasbrackets)

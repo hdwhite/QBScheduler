@@ -1,7 +1,7 @@
 <?php
 //This is the body of the schedule creation/edit pages. It's mostly forms.
 if(!isset($tournamentid)) $tournamentid = 0;
-if(!isset($tourneyname)) $toiurneyname = "";
+if(!isset($tourneyname)) $tourneyname = "";
 if($mode === "edit") { ?>
 <div class="entry">
 	<h4>You are in edit mode</h4>
@@ -19,7 +19,7 @@ if($mode === "edit") { ?>
 <div class="entry">
 	<form action="/qb/schedules/createschedule.php" method="post">
 		<input type="hidden" id="tournamentid" name="tournamentid" value="<?=$tournamentid; ?>">
-		<input type="hidden" id="hash" name="hash" value="<?=$editcode; ?>">
+		<input type="hidden" id="hash" name="hash" value="<?=(isset($editcode) ? $editcode : ""); ?>">
 		<p><b>Tournament name:</b> <input type="text" name="name" id="tournamentname" value="<?=$tourneyname ?>" required></p>
 		<p><b>Number of teams:</b> 
 		<select name="numTeams" id="numTeams" required>
