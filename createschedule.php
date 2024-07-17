@@ -5,22 +5,22 @@ require_once("dbnames.inc");
 require_once($_dbconfig);
 
 //Turns all the POST data into variables
-$tournamentid = $_POST['tournamentid'];
-$editcode = $_POST['hash'];
-$tournamentname = trim($_POST['name']);
-$numteams = $_POST['numTeams'];
-$format = $_POST[$numteams . 'teamschedules'];
+$tournamentid = isset($_POST['tournamentid']) ? $_POST['tournamentid'] : 0;
+$editcode = isset($_POST['hash']) ? $_POST['hash'] : "";
+$tournamentname = isset($_POST['name']) ? trim($_POST['name']) : "";
+$numteams = isset($_POST['numTeams']) ? $_POST['numTeams'] : 0;
+$format = isset($_POST[$numteams . 'teamschedules']) ? $_POST[$numteams . 'teamschedules'] : "";
 $prelimbrackets = array();
 $teamlist = array();
 $playofflist = array();
 for($i = 0; $i < 8; $i++)
 {
-	$prelimbrackets[$i] = $_POST['prelimBracket' . $i];
-	$teamlist[$i] = explode("\n", $_POST['teams' . $i]);
+	$prelimbrackets[$i] = isset($_POST['prelimBracket' . $i]) ? $_POST['prelimBracket' . $i] : "";
+	$teamlist[$i] = isset($_POST['teams' . $i]) ? explode("\n", $_POST['teams' . $i]) : array();
 }
-$roomlist = explode("\n", $_POST['rooms']);
-$numfinals = $_POST['finals'];
-$submit = $_POST['submit'];
+$roomlist = isset($_POST['rooms']) ? explode("\n", $_POST['rooms']) : array();
+$numfinals = isset($_POST['finals']) ? $_POST['finals'] : "";
+$submit = isset($_POST['submit']) ? $_POST['submit'] : "";
 if($submit != "Generate")
 	exit();
 

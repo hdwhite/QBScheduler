@@ -19,8 +19,8 @@ if($mode === "edit") { ?>
 <div class="entry">
 	<form action="/qb/schedules/createschedule.php" method="post">
 		<input type="hidden" id="tournamentid" name="tournamentid" value="<?=$tournamentid; ?>">
-		<input type="hidden" id="hash" name="hash" value="<?=$editcode; ?>">
-		<p><b>Tournament name:</b> <input type="text" name="name" id="tournamentname" value="<?=$tourneyname ?>" required></p>
+		<input type="hidden" id="hash" name="hash" value="<?=isset($editcode) ? $editcode : ''; ?>">
+		<p><b>Tournament name:</b> <input type="text" name="name" id="tournamentname" value="<?=isset($tourneyname) ? $tourneyname : '' ?>" required></p>
 		<p><b>Number of teams:</b> 
 		<select name="numTeams" id="numTeams" required>
 			<option value="">Teams</option>
