@@ -28,7 +28,7 @@ $bracketparams['numteams'] = 7;
 		</div>
 	</div>
 	<div class="instruction">
-		<p>Teams will be initially seeded into two brackets of 7, in which they will play a six-game round-robin. Afterwards, the teams will be placed into playoff brackets of 6, 4, and 4 teams, respectively, based on their performance in the preliminary rounds. Each team will once again play a round-robin within their new bracket, with the excepion of the top bracket, in which they will only play the three teams they didn't play in the prelims. Only games played against teams in the same playoff bracket will count towards final standing within each bracket. Finals in the top bracket will be played according to the following criteria:</p>
+		<p>Teams will be initially seeded into two brackets of 7, in which they will play a six-game round-robin. Afterwards, the teams will be placed into playoff brackets of 6, 4, and 4 teams, respectively, based on their performance in the preliminary rounds. Each team will once again play a round-robin within their new bracket, with the exception of the top bracket, in which they will only play the three teams they didn't play in the prelims. Only games played against teams in the same playoff bracket will count towards final standing within each bracket. Finals in the top bracket will be played according to the following criteria:</p>
 		<ul>
 			<li class="finals2 finals3" style="display:none">If the first-place team has two or more wins than every other team, then that team wins the tournament outright without the need for a final.</li>
 			<li class="finals1" style="display:none">If there is a single team with the best record, then that team wins the tournament outright without the need for a final.</li>
